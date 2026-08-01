@@ -288,7 +288,6 @@ overflow: hidden;
 text-overflow: ellipsis;
 }
 
-/* Product title link styling */
 .info h3 a {
 color: #212121;
 text-decoration: none;
@@ -448,7 +447,7 @@ TrendyFits
 </div>
 </div>
 
-<!-- AMAZON / FLIPKART STYLE PROMO POSTER BANNERS -->
+<!-- PROMO BANNERS -->
 <div class="promo-banner-container">
 <div class="promo-card">
 <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a" alt="Mega Sale">
@@ -458,7 +457,7 @@ TrendyFits
 </div>
 </div>
 
-<!-- SECTION 0: MY FAVORITES / WISHLIST SECTION -->
+<!-- SECTION 0: WISHLIST -->
 <div class="container" id="wishlist-section">
 <div class="section-header" style="background: #fff0f3;">
 <h2 style="color: #ff3366;">❤️ Your Favorite Products</h2>
@@ -480,9 +479,9 @@ TrendyFits
 <!-- U TURN Shirt -->
 <div class="card" data-id="p1">
 <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+<img src="IMG_9403.jpeg">
 <div class="info">
-<h3><a href="https://amzn.to/4ySrwEm" target="_blank">U TURN Men's Casual Shirt</a></h3>
+<h3><a href="https://amzn.to/4ySrwEm" target="_blank">U TURN Men's Casual Printed Striped Shirt</a></h3>
 <div class="price-box">
 <span class="price">₹397</span>
 <span class="mrp">₹1599</span>
@@ -495,9 +494,9 @@ TrendyFits
 <!-- Zombom Shirt -->
 <div class="card" data-id="p2">
 <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
+<img src="IMG_9404.jpg">
 <div class="info">
-<h3><a href="https://amzn.to/3Tvv6UQ" target="_blank">Zombom Regular Fit Striped Shirt</a></h3>
+<h3><a href="https://amzn.to/3Tvv6UQ" target="_blank">Zombom Men's Regular Fit Vertical Striped Shirt</a></h3>
 <div class="price-box">
 <span class="price">₹799</span>
 <span class="mrp">₹2549</span>
@@ -510,9 +509,9 @@ TrendyFits
 <!-- Afflatus Shirt -->
 <div class="card" data-id="p3">
 <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
+<img src="IMG_9405.jpg">
 <div class="info">
-<h3><a href="https://amzn.to/44WK9cy" target="_blank">Afflatus Men's Striped Shirt</a></h3>
+<h3><a href="https://amzn.to/44WK9cy" target="_blank">Afflatus Men's Striped Casual Regular Fit Shirt</a></h3>
 <div class="price-box">
 <span class="price">₹474</span>
 <span class="mrp">₹1999</span>
@@ -525,9 +524,9 @@ TrendyFits
 <!-- boAt Earbuds -->
 <div class="card" data-id="p4">
 <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df">
+<img src="IMG_9406.jpeg">
 <div class="info">
-<h3><a href="https://amzn.to/4g5jCjn" target="_blank">boAt Airdopes Prime 800D</a></h3>
+<h3><a href="https://amzn.to/4g5jCjn" target="_blank">boAt Airdopes Prime 800D Earbuds</a></h3>
 <div class="price-box">
 <span class="price">₹1,599</span>
 <span class="mrp">₹4,599</span>
@@ -537,10 +536,10 @@ TrendyFits
 </div>
 </div>
 
-<!-- boAt Smartwatch -->
+<!-- boAt Smartwatch (Updated with Real Uploaded Photo) -->
 <div class="card" data-id="p5">
 <button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<img src="IMG_9407.jpeg">
 <div class="info">
 <h3><a href="https://amzn.to/3S9JAcq" target="_blank">boAt Lunar Discovery Smartwatch</a></h3>
 <div class="price-box">
@@ -555,7 +554,7 @@ TrendyFits
 </div>
 </div>
 
-<!-- SECTION 2: TRENDING PRODUCTS (PREVIOUS) -->
+<!-- SECTION 2: TRENDING PRODUCTS -->
 <div class="container" id="trending">
 <div class="section-header">
 <h2>Suggested For You</h2>
@@ -606,7 +605,6 @@ TrendyFits
 </div>
 </div>
 
-
 <!-- SECTION 3: MEN'S FASHION -->
 <div class="container" id="men">
 <div class="section-header">
@@ -637,7 +635,6 @@ TrendyFits
 </div>
 </div>
 
-
 <!-- SECTION 4: WOMEN'S FASHION -->
 <div class="container" id="women">
 <div class="section-header">
@@ -667,7 +664,6 @@ TrendyFits
 
 </div>
 </div>
-
 
 <!-- SECTION 5: FOOTWEAR -->
 <div class="container" id="shoes">
@@ -705,7 +701,7 @@ TrendyFits
 <p>© 2026 TrendyFits. All Rights Reserved.</p>
 </footer>
 
-<!-- JavaScript for Interactive Wishlist System -->
+<!-- JavaScript -->
 <script>
 let wishlist = [];
 
@@ -714,12 +710,10 @@ const card = btn.closest('.card');
 const cardId = card.getAttribute('data-id');
 
 if (btn.classList.contains('active')) {
-// Remove from wishlist
 btn.classList.remove('active');
 btn.innerText = '♡';
 wishlist = wishlist.filter(id => id !== cardId);
 } else {
-// Add to wishlist
 btn.classList.add('active');
 btn.innerText = '❤️';
 if (!wishlist.includes(cardId)) {
@@ -744,12 +738,10 @@ wishlist.forEach(id => {
 const originalCard = document.querySelector(`.card[data-id="${id}"]`);
 if (originalCard) {
 const clonedCard = originalCard.cloneNode(true);
-// Ensure heart remains active in the wishlist section
 const clonedBtn = clonedCard.querySelector('.wishlist-btn');
 clonedBtn.classList.add('active');
 clonedBtn.innerText = '❤️';
 clonedBtn.onclick = function() {
-// Remove from main list when clicked inside wishlist
 originalCard.querySelector('.wishlist-btn').click();
 };
 wishlistGrid.appendChild(clonedCard);
