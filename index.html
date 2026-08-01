@@ -18,7 +18,7 @@ padding: 0;
 body{
 background:#f1f3f6;
 color: #212121;
-padding-bottom: 60px; /* Space for mobile bottom nav */
+padding-bottom: 60px;
 }
 
 /* Header / Navbar */
@@ -78,7 +78,7 @@ font-weight: 600;
 background: white;
 display: flex;
 justify-content: center;
-gap: 30px;
+gap: 25px;
 padding: 12px;
 box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 overflow-x: auto;
@@ -134,7 +134,7 @@ height: 100%;
 object-fit: cover;
 }
 
-/* Flash Sale / Timer Header */
+/* Section Header */
 .section-header {
 background: white;
 padding: 15px 20px;
@@ -228,11 +228,6 @@ display: flex;
 align-items: center;
 justify-content: center;
 box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-transition: transform 0.2s;
-}
-
-.wishlist-btn:hover {
-transform: scale(1.1);
 }
 
 .card img{
@@ -256,20 +251,29 @@ text-overflow: ellipsis;
 .price-box {
 display: flex;
 align-items: center;
-gap: 8px;
-margin-bottom: 10px;
+gap: 6px;
+margin-bottom: 4px;
+flex-wrap: wrap;
 }
 
 .price{
-font-size:16px;
+font-size:15px;
 font-weight:700;
 color: #212121;
+}
+
+.mrp {
+font-size: 12px;
+color: #878787;
+text-decoration: line-through;
 }
 
 .off{
 color:#388e3c;
 font-weight: 600;
-font-size: 13px;
+font-size: 12px;
+margin-bottom: 8px;
+display: block;
 }
 
 .shop{
@@ -364,6 +368,7 @@ TrendyFits
 
 <!-- Category Navigation Bar -->
 <div class="categories-nav">
+<a href="#new-amazon" class="cat-item">⚡ New Amazon Deals</a>
 <a href="#trending" class="cat-item">🔥 Top Trending</a>
 <a href="#men" class="cat-item">👔 Men's Wear</a>
 <a href="#women" class="cat-item">👗 Women's Fashion</a>
@@ -375,15 +380,100 @@ TrendyFits
 <div class="banner-slider">
 <div class="banner-slide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Banner 1"></div>
 <div class="banner-slide"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050" alt="Banner 2"></div>
-<div class="banner-slide"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d" alt="Banner 3"></div>
 </div>
 </div>
 
-<!-- SECTION 1: TRENDING PRODUCTS -->
+<!-- SECTION 0: NEW AMAZON PRODUCTS -->
+<div class="container" id="new-amazon">
+<div class="section-header">
+<h2>⚡ New Special Amazon Deals</h2>
+<div class="timer-box">Limited Offer</div>
+</div>
+<div class="product-grid">
+
+<!-- U TURN Shirt -->
+<div class="card">
+<button class="wishlist-btn">♡</button>
+<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+<div class="info">
+<h3>U TURN Men's Casual Shirt</h3>
+<div class="price-box">
+<span class="price">₹397</span>
+<span class="mrp">₹1599</span>
+</div>
+<span class="off">-75% off</span>
+<a class="shop" href="https://amzn.to/4ySrwEm" target="_blank">Grab Now</a>
+</div>
+</div>
+
+<!-- Zombom Shirt -->
+<div class="card">
+<button class="wishlist-btn">♡</button>
+<img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
+<div class="info">
+<h3>Zombom Regular Fit Striped Shirt</h3>
+<div class="price-box">
+<span class="price">₹799</span>
+<span class="mrp">₹2549</span>
+</div>
+<span class="off">-69% off</span>
+<a class="shop" href="https://amzn.to/3Tvv6UQ" target="_blank">Grab Now</a>
+</div>
+</div>
+
+<!-- Afflatus Shirt -->
+<div class="card">
+<button class="wishlist-btn">♡</button>
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
+<div class="info">
+<h3>Afflatus Men's Striped Shirt</h3>
+<div class="price-box">
+<span class="price">₹474</span>
+<span class="mrp">₹1999</span>
+</div>
+<span class="off">-76% off</span>
+<a class="shop" href="https://amzn.to/44WK9cy" target="_blank">Grab Now</a>
+</div>
+</div>
+
+<!-- boAt Earbuds -->
+<div class="card">
+<button class="wishlist-btn">♡</button>
+<img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df">
+<div class="info">
+<h3>boAt Airdopes Prime 800D</h3>
+<div class="price-box">
+<span class="price">₹1,599</span>
+<span class="mrp">₹4,599</span>
+</div>
+<span class="off">-65% off</span>
+<a class="shop" href="https://amzn.to/4g5jCjn" target="_blank">Grab Now</a>
+</div>
+</div>
+
+<!-- boAt Smartwatch -->
+<div class="card">
+<button class="wishlist-btn">♡</button>
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
+<div class="info">
+<h3>boAt Lunar Discovery Smartwatch</h3>
+<div class="price-box">
+<span class="price">₹1,460</span>
+<span class="mrp">₹8,499</span>
+</div>
+<span class="off">-83% off</span>
+<a class="shop" href="https://amzn.to/3S9JAcq" target="_blank">Grab Now</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- SECTION 1: TRENDING PRODUCTS (PREVIOUS) -->
 <div class="container" id="trending">
 <div class="section-header">
 <h2>Suggested For You</h2>
-<div class="timer-box">⚡ Ends in 05 : 42 : 18</div>
+<div class="timer-box">⚡ Flash Sale</div>
 </div>
 <div class="product-grid">
 
@@ -392,10 +482,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Buda Jeans Co Polo T-Shirt</h3>
-<div class="price-box">
-<span class="price">₹310</span>
-<span class="off">69% off</span>
-</div>
+<div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
 <a class="shop" href="https://ajiio.in/8CEqpia">Grab Now</a>
 </div>
 </div>
@@ -405,10 +492,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>John Players Checked Shirt</h3>
-<div class="price-box">
-<span class="price">₹618</span>
-<span class="off">70% off</span>
-</div>
+<div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
 <a class="shop" href="https://ajiio.in/D8JLAG7">Grab Now</a>
 </div>
 </div>
@@ -418,10 +502,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <div class="info">
 <h3>RODEIZ Casual Shirt</h3>
-<div class="price-box">
-<span class="price">₹246</span>
-<span class="off">78% off</span>
-</div>
+<div class="price-box"><span class="price">₹246</span><span class="off">78% off</span></div>
 <a class="shop" href="https://fktr.in/kWbUm9H">Grab Now</a>
 </div>
 </div>
@@ -431,10 +512,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
 <div class="info">
 <h3>RED TAPE Running Shoes</h3>
-<div class="price-box">
-<span class="price">₹1064</span>
-<span class="off">86% off</span>
-</div>
+<div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
 <a class="shop" href="https://ajiio.in/sd0I9n5">Grab Now</a>
 </div>
 </div>
@@ -455,10 +533,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Buda Jeans Co Polo T-Shirt</h3>
-<div class="price-box">
-<span class="price">₹310</span>
-<span class="off">69% off</span>
-</div>
+<div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
 <a class="shop" href="https://ajiio.in/8CEqpia">Grab Now</a>
 </div>
 </div>
@@ -468,10 +543,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>John Players Checked Shirt</h3>
-<div class="price-box">
-<span class="price">₹618</span>
-<span class="off">70% off</span>
-</div>
+<div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
 <a class="shop" href="https://ajiio.in/D8JLAG7">Grab Now</a>
 </div>
 </div>
@@ -481,10 +553,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <div class="info">
 <h3>RODEIZ Casual Shirt</h3>
-<div class="price-box">
-<span class="price">₹246</span>
-<span class="off">78% off</span>
-</div>
+<div class="price-box"><span class="price">₹246</span><span class="off">78% off</span></div>
 <a class="shop" href="https://fktr.in/kWbUm9H">Grab Now</a>
 </div>
 </div>
@@ -505,10 +574,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1">
 <div class="info">
 <h3>AVAASA Floral Kurta</h3>
-<div class="price-box">
-<span class="price">₹254</span>
-<span class="off">49% off</span>
-</div>
+<div class="price-box"><span class="price">₹254</span><span class="off">49% off</span></div>
 <a class="shop" href="https://ajiio.in/yHUXUZc">Grab Now</a>
 </div>
 </div>
@@ -518,10 +584,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f">
 <div class="info">
 <h3>KOTTY Flared Trousers</h3>
-<div class="price-box">
-<span class="price">₹280</span>
-<span class="off">86% off</span>
-</div>
+<div class="price-box"><span class="price">₹280</span><span class="off">86% off</span></div>
 <a class="shop" href="https://ajiio.in/7cg3H6N">Grab Now</a>
 </div>
 </div>
@@ -531,10 +594,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
 <div class="info">
 <h3>WANQUILA Women Top</h3>
-<div class="price-box">
-<span class="price">₹324</span>
-<span class="off">87% off</span>
-</div>
+<div class="price-box"><span class="price">₹324</span><span class="off">87% off</span></div>
 <a class="shop" href="https://ajiio.in/zKp77Lu">Grab Now</a>
 </div>
 </div>
@@ -555,10 +615,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
 <div class="info">
 <h3>RED TAPE Running Shoes</h3>
-<div class="price-box">
-<span class="price">₹1064</span>
-<span class="off">86% off</span>
-</div>
+<div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
 <a class="shop" href="https://ajiio.in/sd0I9n5">Grab Now</a>
 </div>
 </div>
@@ -568,10 +625,7 @@ TrendyFits
 <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772">
 <div class="info">
 <h3>ASIAN Sneakers</h3>
-<div class="price-box">
-<span class="price">₹807</span>
-<span class="off">46% off</span>
-</div>
+<div class="price-box"><span class="price">₹807</span><span class="off">46% off</span></div>
 <a class="shop" href="https://ajiio.in/x6cd5TV">Grab Now</a>
 </div>
 </div>
@@ -579,13 +633,13 @@ TrendyFits
 </div>
 </div>
 
-<!-- Mobile Bottom Navigation Bar (App Like) -->
+<!-- Mobile Bottom Navigation Bar -->
 <div class="mobile-bottom-nav">
 <a href="#" class="nav-item"><span class="icon">🏠</span>Home</a>
+<a href="#new-amazon" class="nav-item"><span class="icon">⚡</span>Deals</a>
 <a href="#trending" class="nav-item"><span class="icon">🔥</span>Trending</a>
 <a href="#men" class="nav-item"><span class="icon">👔</span>Men</a>
 <a href="#women" class="nav-item"><span class="icon">👗</span>Women</a>
-<a href="#shoes" class="nav-item"><span class="icon">👟</span>Shoes</a>
 </div>
 
 <!-- Footer -->
