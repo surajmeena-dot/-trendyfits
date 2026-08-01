@@ -18,14 +18,14 @@ padding: 0;
 }
 
 body{
-background: #eef2f7; /* Fresh Premium E-commerce Background */
-color: #212121;
+background: #121212; /* Premium Dark Theme Background */
+color: #e0e0e0;
 padding-bottom: 60px;
 }
 
 /* Header / Navbar */
 header{
-background: #2874f0;
+background: #000000;
 color:white;
 padding: 12px 20px;
 display: flex;
@@ -34,7 +34,8 @@ justify-content: space-between;
 position: sticky;
 top: 0;
 z-index: 1000;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+border-bottom: 1px solid #222;
 }
 
 .logo-area {
@@ -44,6 +45,7 @@ font-style: italic;
 display: flex;
 flex-direction: column;
 line-height: 1;
+color: #bb86fc;
 }
 
 .logo-sub {
@@ -62,10 +64,16 @@ margin: 0 20px;
 .search-bar input {
 width: 100%;
 padding: 10px 15px;
-border-radius: 2px;
-border: none;
+border-radius: 4px;
+border: 1px solid #333;
+background: #1e1e1e;
+color: white;
 outline: none;
 font-size: 14px;
+}
+
+.search-bar input::placeholder {
+color: #888;
 }
 
 .nav-links {
@@ -77,25 +85,30 @@ align-items: center;
 }
 
 .nav-links a {
-color: white;
+color: #e0e0e0;
 text-decoration: none;
+}
+
+.nav-links a:hover {
+color: #bb86fc;
 }
 
 /* Categories Bar */
 .categories-nav {
-background: white;
+background: #1a1a1a;
 display: flex;
 justify-content: center;
 gap: 25px;
 padding: 12px;
-box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 overflow-x: auto;
+border-bottom: 1px solid #222;
 }
 
 .cat-item {
 font-size: 14px;
 font-weight: 600;
-color: #384144;
+color: #b0b0b0;
 cursor: pointer;
 white-space: nowrap;
 text-decoration: none;
@@ -103,7 +116,7 @@ transition: color 0.2s;
 }
 
 .cat-item:hover {
-color: #2874f0;
+color: #bb86fc;
 }
 
 /* Hero Banner Slider */
@@ -133,7 +146,7 @@ scroll-snap-align: start;
 height: 250px;
 border-radius: 8px;
 overflow: hidden;
-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 .banner-slide img {
@@ -156,7 +169,7 @@ flex: 1;
 height: 140px;
 border-radius: 8px;
 overflow: hidden;
-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+box-shadow: 0 2px 6px rgba(0,0,0,0.5);
 position: relative;
 }
 
@@ -168,10 +181,10 @@ object-fit: cover;
 
 /* Section Header */
 .section-header {
-background: white;
+background: #1e1e1e;
 padding: 15px 20px;
 border-radius: 8px 8px 0 0;
-border-bottom: 1px solid #f0f0f0;
+border-bottom: 1px solid #2d2d2d;
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -182,17 +195,17 @@ gap: 10px;
 .section-header h2 {
 font-size: 18px;
 font-weight: 600;
-color: #212121;
+color: #ffffff;
 }
 
 .timer-box {
-background: #fffae6;
-color: #d32f2f;
+background: #2a2416;
+color: #ffd54f;
 padding: 5px 12px;
 border-radius: 4px;
 font-size: 13px;
 font-weight: 600;
-border: 1px solid #ffe082;
+border: 1px solid #5c4d1f;
 }
 
 /* Container */
@@ -206,10 +219,10 @@ padding: 0 15px;
 .product-grid {
 display: flex;
 gap: 15px;
-background: white;
+background: #1a1a1a;
 padding: 15px;
 border-radius: 0 0 8px 8px;
-box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 margin-bottom: 25px;
 overflow-x: auto;
 scroll-behavior: smooth;
@@ -220,14 +233,14 @@ height: 6px;
 }
 
 .product-grid::-webkit-scrollbar-thumb {
-background: #ccc;
+background: #444;
 border-radius: 4px;
 }
 
 .card {
-background: white;
+background: #242424;
 border-radius: 6px;
-border: 1px solid #f0f0f0;
+border: 1px solid #333;
 padding: 12px;
 min-width: 210px;
 max-width: 210px;
@@ -241,7 +254,8 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
 
 .card:hover {
 transform: translateY(-4px);
-box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+border-color: #bb86fc;
 }
 
 /* Wishlist Heart Icon Style */
@@ -249,7 +263,7 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 position: absolute;
 top: 15px;
 right: 15px;
-background: white;
+background: #1e1e1e;
 border: none;
 font-size: 18px;
 cursor: pointer;
@@ -259,8 +273,8 @@ border-radius: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-color: #ccc;
+box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+color: #888;
 transition: color 0.2s, transform 0.2s;
 z-index: 10;
 }
@@ -291,13 +305,13 @@ text-overflow: ellipsis;
 }
 
 .info h3 a {
-color: #212121;
+color: #e0e0e0;
 text-decoration: none;
 transition: color 0.2s;
 }
 
 .info h3 a:hover {
-color: #2874f0;
+color: #bb86fc;
 text-decoration: underline;
 }
 
@@ -312,17 +326,17 @@ flex-wrap: wrap;
 .price{
 font-size:15px;
 font-weight:700;
-color: #212121;
+color: #03dac6;
 }
 
 .mrp {
 font-size: 12px;
-color: #878787;
+color: #888;
 text-decoration: line-through;
 }
 
 .off{
-color:#388e3c;
+color:#4caf50;
 font-weight: 600;
 font-size: 12px;
 margin-bottom: 8px;
@@ -332,8 +346,8 @@ display: block;
 .shop{
 display:block;
 text-align:center;
-background:#ff9f00;
-color:white;
+background:#bb86fc;
+color:#121212;
 padding:10px;
 border-radius:4px;
 text-decoration:none;
@@ -343,13 +357,14 @@ transition: background 0.2s;
 }
 
 .shop:hover{
-background:#fb641b;
+background:#3700b3;
+color: white;
 }
 
 /* Empty Wishlist Message */
 .empty-msg {
 font-size: 14px;
-color: #878787;
+color: #888;
 padding: 20px;
 text-align: center;
 width: 100%;
@@ -362,17 +377,18 @@ position: fixed;
 bottom: 0;
 left: 0;
 width: 100%;
-background: white;
-box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+background: #000000;
+box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
 justify-content: space-around;
 padding: 10px 0;
 z-index: 1000;
+border-top: 1px solid #222;
 }
 
 .nav-item {
 text-align: center;
 text-decoration: none;
-color: #535763;
+color: #888;
 font-size: 11px;
 font-weight: 600;
 display: flex;
@@ -399,16 +415,17 @@ flex-direction: column;
 
 /* Footer */
 footer{
-background: #172337;
+background: #000000;
 color: white;
 text-align: center;
 padding: 30px 20px;
 margin-top: 40px;
 font-size: 14px;
+border-top: 1px solid #222;
 }
 
 footer p {
-color: #878787;
+color: #888;
 margin-top: 5px;
 }
 </style>
@@ -420,10 +437,10 @@ margin-top: 5px;
 <header>
 <div class="logo-area">
 TrendyFits
-<span class="logo-sub">Explore Plus <span style="color:#ffe11b;">✦</span></span>
+<span class="logo-sub">Black Edition <span style="color:#ffe11b;">✦</span></span>
 </div>
 <div class="search-bar">
-<input placeholder="Search for products, brands and more">
+<input type="text" id="searchInput" placeholder="Search for products, brands and more..." oninput="searchProducts()">
 </div>
 <div class="nav-links">
 <a href="#wishlist-section">❤️ Favorites (<span id="wishlist-count">0</span>)</a>
@@ -461,9 +478,9 @@ TrendyFits
 
 <!-- SECTION 0: WISHLIST -->
 <div class="container" id="wishlist-section">
-<div class="section-header" style="background: #fff0f3;">
+<div class="section-header" style="background: #251b22; border-color: #3b2532;">
 <h2 style="color: #ff3366;">❤️ Your Favorite Products</h2>
-<div class="timer-box" style="background: #ffe6eb; color: #ff3366; border-color: #ffb3c6;">Saved Items</div>
+<div class="timer-box" style="background: #331a22; color: #ff3366; border-color: #5c2435;">Saved Items</div>
 </div>
 <div class="product-grid" id="wishlist-grid">
 <div class="empty-msg">No favorites added yet! Click the heart icon (♡) on any product to save it here.</div>
@@ -753,6 +770,21 @@ clonedBtn.onclick = function() {
 originalCard.querySelector('.wishlist-btn').click();
 };
 wishlistGrid.appendChild(clonedCard);
+}
+});
+}
+
+// SEARCH FILTER FUNCTION
+function searchProducts() {
+let query = document.getElementById('searchInput').value.toLowerCase();
+let cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+let title = card.querySelector('.info h3').innerText.toLowerCase();
+if (title.includes(query)) {
+card.style.display = "flex";
+} else {
+card.style.display = "none";
 }
 });
 }
