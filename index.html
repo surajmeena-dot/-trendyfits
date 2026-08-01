@@ -3,93 +3,146 @@
 <head>
 <title>TrendyFits | Fashion Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins', sans-serif;
 }
 
 body{
 margin:0;
-background:#f7f7f7;
+background:#f4f6f9;
 }
 
 header{
-background:#111;
+background: linear-gradient(135deg, #111111, #2d2d2d);
 color:white;
-padding:22px;
+padding: 25px;
 text-align:center;
-font-size:32px;
-font-weight:bold;
+font-size:30px;
+font-weight:700;
+letter-spacing: 1px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .tagline{
 text-align:center;
-padding:10px;
+padding:12px;
 color:#666;
+font-size: 14px;
+font-weight: 500;
 }
 
 .search{
 padding:15px;
+max-width: 600px;
+margin: 0 auto;
 }
 
 .search input{
 width:100%;
-padding:14px;
-border-radius:25px;
+padding:14px 20px;
+border-radius:30px;
 border:1px solid #ddd;
+outline: none;
+box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+transition: all 0.3s ease;
+}
+
+.search input:focus {
+border-color: #111;
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .categories{
 display:flex;
 gap:10px;
-padding:10px;
+padding:10px 15px;
 overflow:auto;
+justify-content: center;
 }
 
 .categories button{
-border:0;
+border:1px solid #ddd;
 background:white;
-padding:10px 18px;
-border-radius:20px;
+padding:10px 20px;
+border-radius:25px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.3s ease;
+white-space: nowrap;
+}
+
+.categories button:hover {
+background: #111;
+color: white;
+border-color: #111;
 }
 
 .feed{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-padding:15px;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap:20px;
+padding:20px;
+max-width: 1200px;
+margin: 0 auto;
 }
 
 .card{
 background:white;
-border-radius:18px;
+border-radius:16px;
 overflow:hidden;
-box-shadow:0 2px 10px #ddd;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+border: 1px solid #eaeaea;
+}
+
+.card:hover{
+transform: translateY(-6px);
+box-shadow: 0 12px 30px rgba(0,0,0,0.1);
 }
 
 .card img{
 width:100%;
-height:220px;
+height:240px;
 object-fit:cover;
+transition: transform 0.5s ease;
+}
+
+.card:hover img {
+transform: scale(1.03);
 }
 
 .info{
-padding:12px;
+padding:16px;
 }
 
 .info h3{
-font-size:16px;
+font-size:15px;
+font-weight: 600;
+color: #222;
+margin: 0 0 8px 0;
 }
 
 .price{
 font-size:18px;
-font-weight:bold;
+font-weight:700;
+color: #111;
+display: inline-block;
+margin-right: 10px;
 }
 
 .off{
-color:green;
+color:#16a34a;
+font-weight: 600;
+font-size: 14px;
+background: #ecfdf5;
+padding: 2px 8px;
+border-radius: 6px;
+display: inline-block;
 }
 
 .shop{
@@ -100,13 +153,23 @@ color:white;
 padding:12px;
 border-radius:10px;
 text-decoration:none;
-margin-top:10px;
+font-weight: 600;
+margin-top:14px;
+transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.shop:hover{
+background:#ff3366;
 }
 
 footer{
 text-align:center;
-padding:20px;
+padding:25px;
 color:#777;
+font-size: 14px;
+border-top: 1px solid #ddd;
+margin-top: 30px;
+background: #fff;
 }
 
 </style>
@@ -142,8 +205,10 @@ Trending Fashion | Shop Your Style
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Buda Jeans Co Polo T-Shirt</h3>
-<p class="price">₹310</p>
-<p class="off">69% OFF</p>
+<div>
+<span class="price">₹310</span>
+<span class="off">69% OFF</span>
+</div>
 <a class="shop" href="https://ajiio.in/8CEqpia">Shop Now</a>
 </div>
 </div>
@@ -153,8 +218,10 @@ Trending Fashion | Shop Your Style
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>John Players Checked Shirt</h3>
-<p class="price">₹618</p>
-<p class="off">70% OFF</p>
+<div>
+<span class="price">₹618</span>
+<span class="off">70% OFF</span>
+</div>
 <a class="shop" href="https://ajiio.in/D8JLAG7">Shop Now</a>
 </div>
 </div>
@@ -164,8 +231,10 @@ Trending Fashion | Shop Your Style
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <div class="info">
 <h3>RODEIZ Casual Shirt</h3>
-<p class="price">₹246</p>
-<p class="off">78% OFF</p>
+<div>
+<span class="price">₹246</span>
+<span class="off">78% OFF</span>
+</div>
 <a class="shop" href="https://fktr.in/kWbUm9H">Shop Now</a>
 </div>
 </div>
@@ -175,8 +244,10 @@ Trending Fashion | Shop Your Style
 <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1">
 <div class="info">
 <h3>AVAASA Floral Kurta</h3>
-<p class="price">₹254</p>
-<p class="off">49% OFF</p>
+<div>
+<span class="price">₹254</span>
+<span class="off">49% OFF</span>
+</div>
 <a class="shop" href="https://ajiio.in/yHUXUZc">Shop Now</a>
 </div>
 </div>
@@ -186,8 +257,10 @@ Trending Fashion | Shop Your Style
 <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f">
 <div class="info">
 <h3>KOTTY Flared Trousers</h3>
-<p class="price">₹280</p>
-<p class="off">86% OFF</p>
+<div>
+<span class="price">₹280</span>
+<span class="off">86% OFF</span>
+</div>
 <a class="shop" href="https://ajiio.in/7cg3H6N">Shop Now</a>
 </div>
 </div>
@@ -197,8 +270,10 @@ Trending Fashion | Shop Your Style
 <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
 <div class="info">
 <h3>WANQUILA Women Top</h3>
-<p class="price">₹324</p>
-<p class="off">87% OFF</p>
+<div>
+<span class="price">₹324</span>
+<span class="off">87% OFF</span>
+</div>
 <a class="shop" href="https://ajiio.in/zKp77Lu">Shop Now</a>
 </div>
 </div>
@@ -208,8 +283,10 @@ Trending Fashion | Shop Your Style
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
 <div class="info">
 <h3>RED TAPE Running Shoes</h3>
-<p class="price">₹1064</p>
-<p class="off">86% OFF</p>
+<div>
+<span class="price">₹1064</span>
+<span class="off">86% OFF</span>
+</div>
 <a class="shop" href="https://ajiio.in/sd0I9n5">Shop Now</a>
 </div>
 </div>
@@ -219,8 +296,10 @@ Trending Fashion | Shop Your Style
 <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772">
 <div class="info">
 <h3>ASIAN Sneakers</h3>
-<p class="price">₹807</p>
-<p class="off">46% OFF</p>
+<div>
+<span class="price">₹807</span>
+<span class="off">46% OFF</span>
+</div>
 <a class="shop" href="https://ajiio.in/x6cd5TV">Shop Now</a>
 </div>
 </div>
