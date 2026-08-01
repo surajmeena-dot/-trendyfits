@@ -2,14 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TrendyFits | Online Shopping Store</title>
+<title>TrendyFits | Black Edition</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Shopping Cart Favicon / Thumbnail -->
+<!-- Shopping Cart Favicon -->
 <link rel="icon" href="https://emojiisland.com/cdn/shop/products/Shopping_Cart_Emoji_5ba2dbdf-cfa9-4a46-834c-6dd410fdd3c0_large.png?v=1571606093" type="image/png">
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* --- VARIABLES & RESET --- */
+:root {
+--bg-dark: #121212;
+--card-bg: #1e1e1e;
+--text-main: #e0e0e0;
+--text-muted: #a0a0a0;
+--accent-blue: #bb86fc; /* Purple accent for dark theme */
+--accent-yellow: #fbc02d;
+--header-bg: #000000;
+--border-color: #333;
+--price-green: #03dac6;
+}
+
 *{
 box-sizing:border-box;
 font-family:'Poppins', sans-serif;
@@ -18,23 +31,23 @@ padding: 0;
 }
 
 body{
-background: #eef2f7; /* Fresh Premium E-commerce Background */
-color: #212121;
-padding-bottom: 60px;
+background: var(--bg-dark);
+color: var(--text-main);
+padding-bottom: 70px; /* Space for mobile nav */
 }
 
-/* Header / Navbar */
+/* --- HEADER / NAVBAR --- */
 header{
-background: #2874f0;
+background: var(--header-bg);
 color:white;
-padding: 12px 20px;
+padding: 15px 20px;
 display: flex;
 align-items: center;
 justify-content: space-between;
 position: sticky;
 top: 0;
 z-index: 1000;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .logo-area {
@@ -44,58 +57,82 @@ font-style: italic;
 display: flex;
 flex-direction: column;
 line-height: 1;
+color: var(--accent-blue);
 }
 
 .logo-sub {
 font-size: 10px;
 font-style: normal;
 font-weight: 400;
-color: #ffe11b;
+color: var(--accent-yellow);
 }
 
 .search-bar {
 flex: 1;
 max-width: 550px;
 margin: 0 20px;
+position: relative;
 }
 
 .search-bar input {
 width: 100%;
-padding: 10px 15px;
-border-radius: 2px;
-border: none;
+padding: 12px 15px;
+border-radius: 25px; /* Rounded search bar */
+border: 1px solid var(--border-color);
+background: #2c2c2c;
 outline: none;
 font-size: 14px;
+color: white;
+}
+
+.search-bar input::placeholder {
+color: var(--text-muted);
 }
 
 .nav-links {
 display: flex;
-gap: 20px;
+gap: 25px;
 font-size: 14px;
 font-weight: 600;
 align-items: center;
 }
 
 .nav-links a {
-color: white;
+color: var(--text-main);
 text-decoration: none;
+transition: color 0.3s;
+position: relative;
 }
 
-/* Categories Bar */
+.nav-links a:hover {
+color: var(--accent-blue);
+}
+
+#wishlist-count {
+background: var(--accent-blue);
+color: black;
+border-radius: 50%;
+padding: 2px 6px;
+font-size: 10px;
+margin-left: 5px;
+}
+
+/* --- CATEGORIES BAR --- */
 .categories-nav {
-background: white;
+background: var(--card-bg);
 display: flex;
 justify-content: center;
-gap: 25px;
-padding: 12px;
-box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+gap: 30px;
+padding: 15px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 overflow-x: auto;
+border-bottom: 1px solid var(--border-color);
 }
 
 .cat-item {
-font-size: 14px;
+font-size: 13px;
 font-weight: 600;
-color: #384144;
+color: var(--text-main);
 cursor: pointer;
 white-space: nowrap;
 text-decoration: none;
@@ -103,15 +140,14 @@ transition: color 0.2s;
 }
 
 .cat-item:hover {
-color: #2874f0;
+color: var(--accent-blue);
 }
 
-/* Hero Banner Slider */
+/* --- HERO BANNER SLIDER --- */
 .hero-banner {
 max-width: 1200px;
-margin: 15px auto;
+margin: 20px auto;
 padding: 0 15px;
-position: relative;
 }
 
 .banner-slider {
@@ -119,7 +155,7 @@ display: flex;
 overflow-x: auto;
 scroll-snap-type: x mandatory;
 gap: 15px;
-border-radius: 8px;
+border-radius: 12px;
 scrollbar-width: none;
 }
 
@@ -131,9 +167,9 @@ display: none;
 min-width: 100%;
 scroll-snap-align: start;
 height: 250px;
-border-radius: 8px;
+border-radius: 12px;
 overflow: hidden;
-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .banner-slide img {
@@ -142,10 +178,10 @@ height: 100%;
 object-fit: cover;
 }
 
-/* Amazon / Flipkart Style Promotional Offer Banners */
+/* --- PROMO BANNERS --- */
 .promo-banner-container {
 max-width: 1200px;
-margin: 20px auto;
+margin: 25px auto;
 padding: 0 15px;
 display: flex;
 gap: 15px;
@@ -153,11 +189,15 @@ gap: 15px;
 
 .promo-card {
 flex: 1;
-height: 140px;
-border-radius: 8px;
+height: 150px;
+border-radius: 12px;
 overflow: hidden;
-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-position: relative;
+box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+transition: transform 0.3s;
+}
+
+.promo-card:hover {
+transform: scale(1.02);
 }
 
 .promo-card img {
@@ -166,119 +206,140 @@ height: 100%;
 object-fit: cover;
 }
 
-/* Section Header */
+/* --- SECTION HEADERS --- */
 .section-header {
-background: white;
+background: var(--card-bg);
 padding: 15px 20px;
-border-radius: 8px 8px 0 0;
-border-bottom: 1px solid #f0f0f0;
+border-radius: 12px 12px 0 0;
+border-bottom: 1px solid var(--border-color);
 display: flex;
 justify-content: space-between;
 align-items: center;
 flex-wrap: wrap;
 gap: 10px;
+margin-top: 20px;
 }
 
 .section-header h2 {
-font-size: 18px;
-font-weight: 600;
-color: #212121;
+font-size: 20px;
+font-weight: 700;
+color: var(--text-main);
 }
 
 .timer-box {
-background: #fffae6;
-color: #d32f2f;
-padding: 5px 12px;
-border-radius: 4px;
-font-size: 13px;
+background: rgba(251, 192, 45, 0.1);
+color: var(--accent-yellow);
+padding: 6px 12px;
+border-radius: 20px;
+font-size: 12px;
 font-weight: 600;
-border: 1px solid #ffe082;
+border: 1px solid var(--accent-yellow);
 }
 
-/* Container */
+/* --- PRODUCT GRID --- */
 .container {
 max-width: 1200px;
-margin: 20px auto;
+margin: 0 auto;
 padding: 0 15px;
 }
 
-/* Horizontal Scroll Product Grid */
 .product-grid {
 display: flex;
-gap: 15px;
-background: white;
-padding: 15px;
-border-radius: 0 0 8px 8px;
-box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-margin-bottom: 25px;
-overflow-x: auto;
+gap: 20px;
+background: var(--card-bg);
+padding: 20px;
+border-radius: 0 0 12px 12px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+margin-bottom: 30px;
+overflow-x: auto; /* Horizontal scroll for sections */
 scroll-behavior: smooth;
 }
 
+/* Custom Scrollbar for Product Grid */
 .product-grid::-webkit-scrollbar {
-height: 6px;
+height: 8px;
+}
+
+.product-grid::-webkit-scrollbar-track {
+background: var(--bg-dark);
 }
 
 .product-grid::-webkit-scrollbar-thumb {
-background: #ccc;
+background: #444;
 border-radius: 4px;
 }
 
+.product-grid::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
+/* Message shown when no products match search */
+.no-results-msg {
+color: var(--text-muted);
+text-align: center;
+padding: 40px;
+font-size: 16px;
+display: none; /* Hidden by default */
+width: 100%;
+}
+
+/* --- PRODUCT CARD --- */
 .card {
-background: white;
-border-radius: 6px;
-border: 1px solid #f0f0f0;
-padding: 12px;
-min-width: 210px;
-max-width: 210px;
+background: #252525; /* Slightly lighter than card-bg for depth */
+border-radius: 10px;
+border: 1px solid var(--border-color);
+padding: 15px;
+min-width: 220px;
+max-width: 220px;
 flex: 0 0 auto;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 position: relative;
-transition: transform 0.2s ease, box-shadow 0.2s ease;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-transform: translateY(-4px);
-box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+border-color: var(--accent-blue);
 }
 
-/* Wishlist Heart Icon Style */
 .wishlist-btn {
 position: absolute;
-top: 15px;
-right: 15px;
-background: white;
+top: 10px;
+right: 10px;
+background: rgba(0,0,0,0.6);
 border: none;
 font-size: 18px;
 cursor: pointer;
-width: 32px;
-height: 32px;
+width: 36px;
+height: 36px;
 border-radius: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-color: #ccc;
-transition: color 0.2s, transform 0.2s;
+box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+color: var(--text-muted);
+transition: all 0.3s;
 z-index: 10;
 }
 
-.wishlist-btn.active {
-color: #ff3366;
+.wishlist-btn:hover {
+background: rgba(255, 255, 255, 0.1);
+color: white;
 }
 
-.wishlist-btn:hover {
-transform: scale(1.1);
+.wishlist-btn.active {
+color: #ff4081; /* Pink heart when active */
 }
 
 .card img{
 width:100%;
-height:180px;
+height:190px;
 object-fit:cover;
-border-radius: 4px;
-margin-bottom: 10px;
+border-radius: 8px;
+margin-bottom: 12px;
 }
 
 .info h3{
@@ -291,125 +352,169 @@ text-overflow: ellipsis;
 }
 
 .info h3 a {
-color: #212121;
+color: var(--text-main);
 text-decoration: none;
 transition: color 0.2s;
 }
 
 .info h3 a:hover {
-color: #2874f0;
+color: var(--accent-blue);
 text-decoration: underline;
 }
 
 .price-box {
 display: flex;
 align-items: center;
-gap: 6px;
+gap: 8px;
 margin-bottom: 4px;
-flex-wrap: wrap;
 }
 
 .price{
-font-size:15px;
+font-size:16px;
 font-weight:700;
-color: #212121;
+color: var(--price-green);
 }
 
 .mrp {
 font-size: 12px;
-color: #878787;
+color: var(--text-muted);
 text-decoration: line-through;
 }
 
 .off{
-color:#388e3c;
-font-weight: 600;
+color: #4caf50; /* Green discount text */
+font-weight: 700;
 font-size: 12px;
-margin-bottom: 8px;
+margin-bottom: 10px;
 display: block;
 }
 
 .shop{
 display:block;
 text-align:center;
-background:#ff9f00;
-color:white;
-padding:10px;
-border-radius:4px;
+background: var(--accent-blue);
+color: black;
+padding: 12px;
+border-radius: 6px;
 text-decoration:none;
-font-weight: 600;
+font-weight: 700;
 font-size: 14px;
-transition: background 0.2s;
+transition: background 0.3s;
 }
 
 .shop:hover{
-background:#fb641b;
+background: #e0b7ff; /* Lighter purple on hover */
 }
 
-/* Empty Wishlist Message */
+/* --- EMPTY WISHLIST MSG --- */
 .empty-msg {
 font-size: 14px;
-color: #878787;
-padding: 20px;
+color: var(--text-muted);
+padding: 40px;
 text-align: center;
 width: 100%;
 }
 
-/* Mobile Bottom Navigation Bar */
+/* --- MOBILE BOTTOM NAV --- */
 .mobile-bottom-nav {
 display: none;
 position: fixed;
 bottom: 0;
 left: 0;
 width: 100%;
-background: white;
-box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+background: var(--header-bg);
+border-top: 1px solid var(--border-color);
 justify-content: space-around;
-padding: 10px 0;
+padding: 12px 0;
 z-index: 1000;
+box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
 }
 
 .nav-item {
 text-align: center;
 text-decoration: none;
-color: #535763;
+color: var(--text-muted);
 font-size: 11px;
 font-weight: 600;
 display: flex;
 flex-direction: column;
 align-items: center;
-gap: 2px;
+gap: 4px;
+transition: color 0.3s;
+}
+
+.nav-item:hover, .nav-item.active {
+color: var(--accent-blue);
 }
 
 .nav-item span.icon {
-font-size: 18px;
+font-size: 20px;
 }
 
+/* --- FOOTER --- */
+footer{
+background: #000000;
+color: var(--text-muted);
+text-align: center;
+padding: 40px 20px;
+margin-top: 50px;
+font-size: 13px;
+border-top: 1px solid var(--border-color);
+}
+
+footer p {
+color: #666;
+margin-top: 8px;
+}
+
+/* --- RESPONSIVE FIXES --- */
 @media (max-width: 768px) {
 .mobile-bottom-nav {
 display: flex;
 }
+.search-bar {
+max-width: none; /* Full width on mobile */
+order: 3; /* Move search bar below logo/links on mobile */
+margin: 15px 0 0 0;
+}
+header {
+flex-wrap: wrap;
+padding: 10px 15px;
+}
 .nav-links {
-display: none;
+display: none; /* Hide desktop links on mobile */
+}
+.container, .hero-banner, .promo-banner-container {
+padding: 0 10px;
 }
 .promo-banner-container {
 flex-direction: column;
+gap: 10px;
 }
+.promo-card {
+height: 120px;
 }
-
-/* Footer */
-footer{
-background: #172337;
-color: white;
-text-align: center;
-padding: 30px 20px;
-margin-top: 40px;
+.section-header {
+padding: 10px 15px;
+}
+.product-grid {
+padding: 10px;
+gap: 10px;
+}
+.card {
+min-width: 160px; /* Smaller cards on mobile */
+max-width: 160px;
+padding: 10px;
+}
+.card img {
+height: 140px;
+}
+.info h3 {
+font-size: 13px;
+}
+.price {
 font-size: 14px;
 }
-
-footer p {
-color: #878787;
-margin-top: 5px;
 }
 </style>
 </head>
@@ -420,10 +525,11 @@ margin-top: 5px;
 <header>
 <div class="logo-area">
 TrendyFits
-<span class="logo-sub">Explore Plus <span style="color:#ffe11b;">✦</span></span>
+<span class="logo-sub">Black Edition <span style="color:#ffe11b;">✦</span></span>
 </div>
 <div class="search-bar">
-<input placeholder="Search for products, brands and more">
+<!-- ONINPUT FUNCTION ADDED HERE -->
+<input type="text" id="searchInput" placeholder="Search shirts, shoes, kurtas..." oninput="searchProducts()">
 </div>
 <div class="nav-links">
 <a href="#wishlist-section">❤️ Favorites (<span id="wishlist-count">0</span>)</a>
@@ -434,329 +540,5 @@ TrendyFits
 <!-- Category Navigation Bar -->
 <div class="categories-nav">
 <a href="#wishlist-section" class="cat-item">❤️ My Favorites</a>
-<a href="#new-amazon" class="cat-item">⚡ Amazon Deals</a>
-<a href="#trending" class="cat-item">🔥 Top Trending</a>
-<a href="#men" class="cat-item">👔 Men's Wear</a>
-<a href="#women" class="cat-item">👗 Women's Fashion</a>
-<a href="#shoes" class="cat-item">👟 Footwear</a>
-</div>
+<a href="#new-amazon" class="cat-item">⚡
 
-<!-- Banner Slider Section -->
-<div class="hero-banner">
-<div class="banner-slider">
-<div class="banner-slide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Banner 1"></div>
-<div class="banner-slide"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050" alt="Banner 2"></div>
-</div>
-</div>
-
-<!-- PROMO BANNERS -->
-<div class="promo-banner-container">
-<div class="promo-card">
-<img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a" alt="Mega Sale">
-</div>
-<div class="promo-card">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Fashion Fest">
-</div>
-</div>
-
-<!-- SECTION 0: WISHLIST -->
-<div class="container" id="wishlist-section">
-<div class="section-header" style="background: #fff0f3;">
-<h2 style="color: #ff3366;">❤️ Your Favorite Products</h2>
-<div class="timer-box" style="background: #ffe6eb; color: #ff3366; border-color: #ffb3c6;">Saved Items</div>
-</div>
-<div class="product-grid" id="wishlist-grid">
-<div class="empty-msg">No favorites added yet! Click the heart icon (♡) on any product to save it here.</div>
-</div>
-</div>
-
-<!-- SECTION 1: NEW AMAZON PRODUCTS -->
-<div class="container" id="new-amazon">
-<div class="section-header">
-<h2>⚡ New Special Amazon Deals</h2>
-<div class="timer-box">Limited Offer</div>
-</div>
-<div class="product-grid">
-
-<!-- U TURN Shirt -->
-<div class="card" data-id="p1">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/CsXxNgdN/IMG-9403.jpg" alt="U TURN Shirt">
-<div class="info">
-<h3><a href="https://amzn.to/4ySrwEm" target="_blank">U TURN Men's Casual Printed Striped Shirt</a></h3>
-<div class="price-box">
-<span class="price">₹397</span>
-<span class="mrp">₹1599</span>
-</div>
-<span class="off">-75% off</span>
-<a class="shop" href="https://amzn.to/4ySrwEm" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<!-- Zombom Shirt -->
-<div class="card" data-id="p2">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/352WYftk/IMG-9404.jpg" alt="Zombom Shirt">
-<div class="info">
-<h3><a href="https://amzn.to/3Tvv6UQ" target="_blank">Zombom Men's Regular Fit Vertical Striped Shirt</a></h3>
-<div class="price-box">
-<span class="price">₹799</span>
-<span class="mrp">₹2549</span>
-</div>
-<span class="off">-69% off</span>
-<a class="shop" href="https://amzn.to/3Tvv6UQ" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<!-- Afflatus Shirt -->
-<div class="card" data-id="p3">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/PZy1Tz2y/IMG-9405.jpg" alt="Afflatus Shirt">
-<div class="info">
-<h3><a href="https://amzn.to/44WK9cy" target="_blank">Afflatus Men's Striped Casual Regular Fit Shirt</a></h3>
-<div class="price-box">
-<span class="price">₹474</span>
-<span class="mrp">₹1999</span>
-</div>
-<span class="off">-76% off</span>
-<a class="shop" href="https://amzn.to/44WK9cy" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<!-- boAt Earbuds -->
-<div class="card" data-id="p4">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/93z7R3KT/IMG-9406.jpg" alt="boAt Earbuds">
-<div class="info">
-<h3><a href="https://amzn.to/4g5jCjn" target="_blank">boAt Airdopes Prime 800D Earbuds</a></h3>
-<div class="price-box">
-<span class="price">₹1,599</span>
-<span class="mrp">₹4,599</span>
-</div>
-<span class="off">-65% off</span>
-<a class="shop" href="https://amzn.to/4g5jCjn" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<!-- boAt Smartwatch -->
-<div class="card" data-id="p5">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/gLWDvtJG/IMG-9407.jpg" alt="boAt Smartwatch">
-<div class="info">
-<h3><a href="https://amzn.to/3S9JAcq" target="_blank">boAt Lunar Discovery Smartwatch</a></h3>
-<div class="price-box">
-<span class="price">₹1,460</span>
-<span class="mrp">₹8,499</span>
-</div>
-<span class="off">-83% off</span>
-<a class="shop" href="https://amzn.to/3S9JAcq" target="_blank">Grab Now</a>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- SECTION 2: TRENDING PRODUCTS -->
-<div class="container" id="trending">
-<div class="section-header">
-<h2>Suggested For You</h2>
-<div class="timer-box">⚡ Flash Sale</div>
-</div>
-<div class="product-grid">
-
-<!-- 1) Buda Jeans Co -->
-<div class="card" data-id="p6">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/k25tDR79/IMG-9408.jpg" alt="Buda Jeans Co Polo T-Shirt">
-<div class="info">
-<h3><a href="https://ajiio.in/8CEqpia" target="_blank">Buda Jeans Co Polo T-Shirt</a></h3>
-<div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
-<a class="shop" href="https://ajiio.in/8CEqpia" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<!-- 2) JOHN PLAYERS -->
-<div class="card" data-id="p7">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/PsszVPq2/IMG-9409.jpg" alt="JOHN PLAYERS Checked Shirt">
-<div class="info">
-<h3><a href="https://ajiio.in/D8JLAG7" target="_blank">John Players Checked Shirt</a></h3>
-<div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
-<a class="shop" href="https://ajiio.in/D8JLAG7" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<!-- 3) RODEIZ -->
-<div class="card" data-id="p8">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/HfmBR0dY/IMG-9410.jpg" alt="RODEIZ Casual Shirt">
-<div class="info">
-<h3><a href="https://fktr.in/kWbUm9H" target="_blank">RODEIZ Casual Shirt</a></h3>
-<div class="price-box"><span class="price">₹246</span><span class="off">78% off</span></div>
-<a class="shop" href="https://fktr.in/kWbUm9H" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<!-- 4) RED TAPE -->
-<div class="card" data-id="p9">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/Qj1X4n5t/IMG-9411.jpg" alt="RED TAPE Running Shoes">
-<div class="info">
-<h3><a href="https://ajiio.in/sd0I9n5" target="_blank">RED TAPE Running Shoes</a></h3>
-<div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
-<a class="shop" href="https://ajiio.in/sd0I9n5" target="_blank">Grab Now</a>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- SECTION 3: MEN'S FASHION -->
-<div class="container" id="men">
-<div class="section-header">
-<h2>Men's Best Styles</h2>
-</div>
-<div class="product-grid">
-
-<div class="card" data-id="p10">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/k25tDR79/IMG-9408.jpg" alt="Buda Jeans Co Polo T-Shirt">
-<div class="info">
-<h3><a href="https://ajiio.in/8CEqpia" target="_blank">Buda Jeans Co Polo T-Shirt</a></h3>
-<div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
-<a class="shop" href="https://ajiio.in/8CEqpia" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<div class="card" data-id="p11">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/PsszVPq2/IMG-9409.jpg" alt="JOHN PLAYERS Checked Shirt">
-<div class="info">
-<h3><a href="https://ajiio.in/D8JLAG7" target="_blank">John Players Checked Shirt</a></h3>
-<div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
-<a class="shop" href="https://ajiio.in/D8JLAG7" target="_blank">Grab Now</a>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- SECTION 4: WOMEN'S FASHION -->
-<div class="container" id="women">
-<div class="section-header">
-<h2>Women's Trends & Ethnic</h2>
-</div>
-<div class="product-grid">
-
-<!-- 5) AVAASA -->
-<div class="card" data-id="p12">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/Y7fRNZT9/IMG-9412.jpg" alt="AVAASA Floral Kurta">
-<div class="info">
-<h3><a href="https://ajiio.in/yHUXUZc" target="_blank">AVAASA Floral Kurta</a></h3>
-<div class="price-box"><span class="price">₹254</span><span class="off">49% off</span></div>
-<a class="shop" href="https://ajiio.in/yHUXUZc" target="_blank">Grab Now</a>
-</div>
-</div>
-
-<!-- 6) KOTTY -->
-<div class="card" data-id="p13">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/xdtmKvN/IMG-9413.jpg" alt="KOTTY Flared Trousers">
-<div class="info">
-<h3><a href="https://ajiio.in/7cg3H6N" target="_blank">KOTTY Flared Trousers</a></h3>
-<div class="price-box"><span class="price">₹280</span><span class="off">86% off</span></div>
-<a class="shop" href="https://ajiio.in/7cg3H6N" target="_blank">Grab Now</a>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- SECTION 5: FOOTWEAR -->
-<div class="container" id="shoes">
-<div class="section-header">
-<h2>Footwear Store</h2>
-</div>
-<div class="product-grid">
-
-<div class="card" data-id="p14">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/Qj1X4n5t/IMG-9411.jpg" alt="RED TAPE Running Shoes">
-<div class="info">
-<h3><a href="https://ajiio.in/sd0I9n5" target="_blank">RED TAPE Running Shoes</a></h3>
-<div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
-<a class="shop" href="https://ajiio.in/sd0I9n5" target="_blank">Grab Now</a>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- Mobile Bottom Navigation Bar -->
-<div class="mobile-bottom-nav">
-<a href="#" class="nav-item"><span class="icon">🏠</span>Home</a>
-<a href="#wishlist-section" class="nav-item"><span class="icon">❤️</span>Favorites</a>
-<a href="#new-amazon" class="nav-item"><span class="icon">⚡</span>Deals</a>
-<a href="#trending" class="nav-item"><span class="icon">🔥</span>Trending</a>
-<a href="#men" class="nav-item"><span class="icon">👔</span>Men</a>
-</div>
-
-<!-- Footer -->
-<footer>
-<h3>TrendyFits</h3>
-<p>Policies: Returns Policy | Terms of Use | Security | Privacy</p>
-<p>© 2026 TrendyFits. All Rights Reserved.</p>
-</footer>
-
-<!-- JavaScript -->
-<script>
-let wishlist = [];
-
-function toggleWishlist(btn) {
-const card = btn.closest('.card');
-const cardId = card.getAttribute('data-id');
-
-if (btn.classList.contains('active')) {
-btn.classList.remove('active');
-btn.innerText = '♡';
-wishlist = wishlist.filter(id => id !== cardId);
-} else {
-btn.classList.add('active');
-btn.innerText = '❤️';
-if (!wishlist.includes(cardId)) {
-wishlist.push(cardId);
-}
-}
-updateWishlistUI();
-}
-
-function updateWishlistUI() {
-const wishlistGrid = document.getElementById('wishlist-grid');
-const countSpan = document.getElementById('wishlist-count');
-countSpan.innerText = wishlist.length;
-
-if (wishlist.length === 0) {
-wishlistGrid.innerHTML = '<div class="empty-msg">No favorites added yet! Click the heart icon (♡) on any product to save it here.</div>';
-return;
-}
-
-wishlistGrid.innerHTML = '';
-wishlist.forEach(id => {
-const originalCard = document.querySelector(`.card[data-id="${id}"]`);
-if (originalCard) {
-const clonedCard = originalCard.cloneNode(true);
-const clonedBtn = clonedCard.querySelector('.wishlist-btn');
-clonedBtn.classList.add('active');
-clonedBtn.innerText = '❤️';
-clonedBtn.onclick = function() {
-originalCard.querySelector('.wishlist-btn').click();
-};
-wishlistGrid.appendChild(clonedCard);
-}
-});
-}
-</script>
-
-</body>
-</html>
