@@ -59,21 +59,39 @@ color: #ffe11b;
 flex: 1;
 max-width: 550px;
 margin: 0 20px;
+display: flex;
 }
 
 .search-bar input {
 width: 100%;
 padding: 10px 15px;
-border-radius: 4px;
+border-radius: 4px 0 0 4px;
 border: 1px solid #333;
 background: #1e1e1e;
 color: white;
 outline: none;
 font-size: 14px;
+border-right: none;
 }
 
 .search-bar input::placeholder {
 color: #888;
+}
+
+.search-btn {
+background: #bb86fc;
+color: #121212;
+border: none;
+padding: 0 16px;
+font-weight: 600;
+border-radius: 0 4px 4px 0;
+cursor: pointer;
+transition: background 0.2s;
+}
+
+.search-btn:hover {
+background: #3700b3;
+color: white;
 }
 
 .nav-links {
@@ -440,7 +458,8 @@ TrendyFits
 <span class="logo-sub">Black Edition <span style="color:#ffe11b;">✦</span></span>
 </div>
 <div class="search-bar">
-<input type="text" id="searchInput" placeholder="Search for products, brands and more..." oninput="searchProducts()">
+<input type="text" id="searchInput" placeholder="Search for products, brands and more..." onkeyup="if(event.key === 'Enter') searchProducts()">
+<button class="search-btn" onclick="searchProducts()">Search</button>
 </div>
 <div class="nav-links">
 <a href="#wishlist-section">❤️ Favorites (<span id="wishlist-count">0</span>)</a>
@@ -459,7 +478,7 @@ TrendyFits
 </div>
 
 <!-- Banner Slider Section -->
-<div class="hero-banner">
+<div class="hero-banner" id="heroBannerSection">
 <div class="banner-slider">
 <div class="banner-slide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Banner 1"></div>
 <div class="banner-slide"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050" alt="Banner 2"></div>
@@ -467,12 +486,23 @@ TrendyFits
 </div>
 
 <!-- PROMO BANNERS -->
-<div class="promo-banner-container">
+<div class="promo-banner-container" id="promoBannerSection">
 <div class="promo-card">
 <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a" alt="Mega Sale">
 </div>
 <div class="promo-card">
 <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Fashion Fest">
+</div>
+</div>
+
+<!-- SEARCH RESULTS SECTION (Initially Hidden) -->
+<div class="container" id="searchResultsContainer" style="display: none;">
+<div class="section-header" style="background: #1a1528; border-color: #3b2a54;">
+<h2 style="color: #bb86fc;">🔍 Search Results</h2>
+<div class="timer-box" style="background: #231934; color: #bb86fc; border-color: #4a356e;" onclick="clearSearch()" style="cursor: pointer;">Clear Search</div>
+</div>
+<div class="product-grid" id="search-results-grid" style="flex-wrap: wrap; overflow-x: visible;">
+<!-- Matched products will appear here -->
 </div>
 </div>
 
@@ -769,24 +799,73 @@ clonedBtn.innerText = '❤️';
 clonedBtn.onclick = function() {
 originalCard.querySelector('.wishlist-btn').click();
 };
-wishlistGrid.appendChild(clonedCard);
+wishlistgrid.appendChild(clonedCard);
 }
 });
 }
 
 // SEARCH FILTER FUNCTION
 function searchProducts() {
-let query = document.getElementById('searchInput').value.toLowerCase();
-let cards = document.querySelectorAll('.card');
+let query = document.getElementById('searchInput').value.toLowerCase().trim();
+let searchResultsContainer = document.getElementById('searchResultsContainer');
+let searchResultsGrid = document.getElementById('search-results-grid');
+let heroBanner = document.getElementById('heroBannerSection');
+let promoBanner = document.getElementById('promoBannerSection');
 
-cards.forEach(card => {
+if (query === "") {
+searchResultsContainer.style.display = "none";
+heroBanner.style.display = "block";
+promoBanner.style.display = "flex";
+return;
+}
+
+// Hide Banners
+heroBanner.style.display = "none";
+promoBanner.style.display = "none";
+searchResultsContainer.style.display = "block";
+searchResultsContainer.scrollIntoView({ behavior: 'smooth' });
+
+searchResultsGrid.innerHTML = "";
+let allCards = document.querySelectorAll('.container:not(#searchResultsContainer):not(#wishlist-section) .card');
+let matchFound = false;
+
+allCards.forEach(card => {
 let title = card.querySelector('.info h3').innerText.toLowerCase();
 if (title.includes(query)) {
-card.style.display = "flex";
+matchFound = true;
+let clonedCard = card.cloneNode(true);
+// Re-bind wishlist functionality on cloned card
+let origBtn = card.querySelector('.wishlist-btn');
+let clonedBtn = clonedCard.querySelector('.wishlist-btn');
+if (origBtn.classList.contains('active')) {
+clonedBtn.classList.add('active');
+clonedBtn.innerText = '❤️';
+}
+clonedBtn.onclick = function() {
+origBtn.click();
+if(origBtn.classList.contains('active')) {
+clonedBtn.classList.add('active');
+clonedBtn.innerText = '❤️';
 } else {
-card.style.display = "none";
+clonedBtn.classList.remove('active');
+clonedBtn.innerText = '♡';
+}
+};
+searchResultsGrid.appendChild(clonedCard);
 }
 });
+
+if (!matchFound) {
+searchResultsGrid.innerHTML = '<div class="empty-msg">No products found matching your search.</div>';
+}
+}
+
+function clearSearch() {
+document.getElementById('searchInput').value = "";
+document.getElementById('searchResultsContainer').style.display = "none";
+document.getElementById('heroBannerSection').style.display = "block";
+document.getElementById('promoBannerSection').style.display = "flex";
+window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 
