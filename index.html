@@ -18,6 +18,7 @@ padding: 0;
 body{
 background:#f1f3f6;
 color: #212121;
+padding-bottom: 60px; /* Space for mobile bottom nav */
 }
 
 /* Header / Navbar */
@@ -97,42 +98,79 @@ transition: color 0.2s;
 color: #2874f0;
 }
 
-/* Hero Banner */
+/* Hero Banner Slider */
 .hero-banner {
 max-width: 1200px;
 margin: 15px auto;
 padding: 0 15px;
+position: relative;
 }
 
-.hero-banner img {
-width: 100%;
-height: 250px;
-object-fit: cover;
+.banner-slider {
+display: flex;
+overflow-x: auto;
+scroll-snap-type: x mandatory;
+gap: 15px;
 border-radius: 8px;
+scrollbar-width: none;
+}
+
+.banner-slider::-webkit-scrollbar {
+display: none;
+}
+
+.banner-slide {
+min-width: 100%;
+scroll-snap-align: start;
+height: 250px;
+border-radius: 8px;
+overflow: hidden;
 box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Section Containers */
+.banner-slide img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* Flash Sale / Timer Header */
+.section-header {
+background: white;
+padding: 15px 20px;
+border-radius: 8px 8px 0 0;
+border-bottom: 1px solid #f0f0f0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+.section-header h2 {
+font-size: 18px;
+font-weight: 600;
+color: #212121;
+}
+
+.timer-box {
+background: #fffae6;
+color: #d32f2f;
+padding: 5px 12px;
+border-radius: 4px;
+font-size: 13px;
+font-weight: 600;
+border: 1px solid #ffe082;
+}
+
+/* Container */
 .container {
 max-width: 1200px;
 margin: 20px auto;
 padding: 0 15px;
 }
 
-.section-header {
-background: white;
-padding: 15px 20px;
-border-radius: 8px 8px 0 0;
-border-bottom: 1px solid #f0f0f0;
-}
-
-.section-header h2 {
-font-size: 20px;
-font-weight: 600;
-color: #212121;
-}
-
-/* Horizontal Scroll / Grid Layout */
+/* Horizontal Scroll Product Grid */
 .product-grid {
 display: flex;
 gap: 15px;
@@ -165,12 +203,36 @@ flex: 0 0 auto;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+position: relative;
 transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
 transform: translateY(-4px);
 box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Wishlist Heart Icon */
+.wishlist-btn {
+position: absolute;
+top: 15px;
+right: 15px;
+background: white;
+border: none;
+font-size: 16px;
+cursor: pointer;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+transition: transform 0.2s;
+}
+
+.wishlist-btn:hover {
+transform: scale(1.1);
 }
 
 .card img{
@@ -227,6 +289,45 @@ transition: background 0.2s;
 background:#fb641b;
 }
 
+/* Mobile Bottom Navigation Bar */
+.mobile-bottom-nav {
+display: none;
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background: white;
+box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+justify-content: space-around;
+padding: 10px 0;
+z-index: 1000;
+}
+
+.nav-item {
+text-align: center;
+text-decoration: none;
+color: #535763;
+font-size: 11px;
+font-weight: 600;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 2px;
+}
+
+.nav-item span.icon {
+font-size: 18px;
+}
+
+@media (max-width: 768px) {
+.mobile-bottom-nav {
+display: flex;
+}
+.nav-links {
+display: none;
+}
+}
+
 /* Footer */
 footer{
 background: #172337;
@@ -265,23 +366,29 @@ TrendyFits
 <div class="categories-nav">
 <a href="#trending" class="cat-item">🔥 Top Trending</a>
 <a href="#men" class="cat-item">👔 Men's Wear</a>
-<a href="#women" class="cat-item">👗 Women's Ethnic & Western</a>
+<a href="#women" class="cat-item">👗 Women's Fashion</a>
 <a href="#shoes" class="cat-item">👟 Footwear</a>
 </div>
 
-<!-- Banner Section -->
+<!-- Banner Slider Section -->
 <div class="hero-banner">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Banner">
+<div class="banner-slider">
+<div class="banner-slide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Banner 1"></div>
+<div class="banner-slide"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050" alt="Banner 2"></div>
+<div class="banner-slide"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d" alt="Banner 3"></div>
+</div>
 </div>
 
 <!-- SECTION 1: TRENDING PRODUCTS -->
 <div class="container" id="trending">
 <div class="section-header">
 <h2>Suggested For You</h2>
+<div class="timer-box">⚡ Ends in 05 : 42 : 18</div>
 </div>
 <div class="product-grid">
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Buda Jeans Co Polo T-Shirt</h3>
@@ -294,6 +401,7 @@ TrendyFits
 </div>
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>John Players Checked Shirt</h3>
@@ -306,6 +414,7 @@ TrendyFits
 </div>
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <div class="info">
 <h3>RODEIZ Casual Shirt</h3>
@@ -318,6 +427,7 @@ TrendyFits
 </div>
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
 <div class="info">
 <h3>RED TAPE Running Shoes</h3>
@@ -341,6 +451,7 @@ TrendyFits
 <div class="product-grid">
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Buda Jeans Co Polo T-Shirt</h3>
@@ -353,6 +464,7 @@ TrendyFits
 </div>
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>John Players Checked Shirt</h3>
@@ -365,6 +477,7 @@ TrendyFits
 </div>
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <div class="info">
 <h3>RODEIZ Casual Shirt</h3>
@@ -388,6 +501,7 @@ TrendyFits
 <div class="product-grid">
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1">
 <div class="info">
 <h3>AVAASA Floral Kurta</h3>
@@ -400,6 +514,7 @@ TrendyFits
 </div>
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f">
 <div class="info">
 <h3>KOTTY Flared Trousers</h3>
@@ -412,6 +527,7 @@ TrendyFits
 </div>
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
 <div class="info">
 <h3>WANQUILA Women Top</h3>
@@ -435,6 +551,7 @@ TrendyFits
 <div class="product-grid">
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
 <div class="info">
 <h3>RED TAPE Running Shoes</h3>
@@ -447,6 +564,7 @@ TrendyFits
 </div>
 
 <div class="card">
+<button class="wishlist-btn">♡</button>
 <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772">
 <div class="info">
 <h3>ASIAN Sneakers</h3>
@@ -461,6 +579,14 @@ TrendyFits
 </div>
 </div>
 
+<!-- Mobile Bottom Navigation Bar (App Like) -->
+<div class="mobile-bottom-nav">
+<a href="#" class="nav-item"><span class="icon">🏠</span>Home</a>
+<a href="#trending" class="nav-item"><span class="icon">🔥</span>Trending</a>
+<a href="#men" class="nav-item"><span class="icon">👔</span>Men</a>
+<a href="#women" class="nav-item"><span class="icon">👗</span>Women</a>
+<a href="#shoes" class="nav-item"><span class="icon">👟</span>Shoes</a>
+</div>
 
 <!-- Footer -->
 <footer>
