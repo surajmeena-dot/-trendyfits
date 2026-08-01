@@ -311,12 +311,13 @@ height:180px;
 object-fit:cover;
 border-radius: 4px;
 margin-bottom: 10px;
+cursor: pointer;
 }
 
 .info h3{
 font-size:14px;
 font-weight: 500;
-margin-bottom: 8px;
+margin-bottom: 6px;
 white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
@@ -331,6 +332,24 @@ transition: color 0.2s;
 .info h3 a:hover {
 color: #bb86fc;
 text-decoration: underline;
+}
+
+/* Ratings & Sold Stats Styling */
+.product-stats {
+display: flex;
+align-items: center;
+justify-content: space-between;
+font-size: 11px;
+color: #aaa;
+margin-bottom: 6px;
+}
+
+.rating-badge {
+background: #1b3b2b;
+color: #2ecc71;
+padding: 2px 5px;
+border-radius: 3px;
+font-weight: 600;
 }
 
 .price-box {
@@ -386,6 +405,98 @@ color: #888;
 padding: 20px;
 text-align: center;
 width: 100%;
+}
+
+/* Product Detail Modal Style */
+.modal-overlay {
+display: none;
+position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: rgba(0,0,0,0.85);
+z-index: 2000;
+justify-content: center;
+align-items: center;
+padding: 20px;
+overflow-y: auto;
+}
+
+.modal-content {
+background: #1a1a1a;
+border: 1px solid #333;
+width: 100%;
+max-width: 800px;
+border-radius: 8px;
+padding: 25px;
+position: relative;
+color: #fff;
+max-height: 90vh;
+overflow-y: auto;
+}
+
+.close-modal {
+position: absolute;
+top: 15px;
+right: 20px;
+background: none;
+border: none;
+color: #aaa;
+font-size: 24px;
+cursor: pointer;
+}
+
+.close-modal:hover {
+color: #fff;
+}
+
+.modal-body-flex {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+margin-bottom: 25px;
+}
+
+.modal-img-wrap {
+flex: 1;
+min-width: 250px;
+height: 320px;
+border-radius: 6px;
+overflow: hidden;
+background: #000;
+}
+
+.modal-img-wrap img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.modal-details {
+flex: 1.2;
+min-width: 250px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.modal-details h2 {
+font-size: 20px;
+margin-bottom: 10px;
+color: #fff;
+}
+
+.similar-section h3 {
+font-size: 16px;
+color: #bb86fc;
+margin-bottom: 15px;
+border-bottom: 1px solid #333;
+padding-bottom: 5px;
+}
+
+.similar-grid {
+display: flex;
+gap: 12px;
+overflow-x: auto;
+padding-bottom: 10px;
 }
 
 /* Mobile Bottom Navigation Bar */
@@ -499,11 +610,9 @@ TrendyFits
 <div class="container" id="searchResultsContainer" style="display: none;">
 <div class="section-header" style="background: #1a1528; border-color: #3b2a54;">
 <h2 style="color: #bb86fc;">🔍 Search Results</h2>
-<div class="timer-box" style="background: #231934; color: #bb86fc; border-color: #4a356e;" onclick="clearSearch()" style="cursor: pointer;">Clear Search</div>
+<div class="timer-box" style="background: #231934; color: #bb86fc; border-color: #4a356e; cursor: pointer;" onclick="clearSearch()">Clear Search</div>
 </div>
-<div class="product-grid" id="search-results-grid" style="flex-wrap: wrap; overflow-x: visible;">
-<!-- Matched products will appear here -->
-</div>
+<div class="product-grid" id="search-results-grid" style="flex-wrap: wrap; overflow-x: visible;"></div>
 </div>
 
 <!-- SECTION 0: WISHLIST -->
@@ -526,11 +635,15 @@ TrendyFits
 <div class="product-grid">
 
 <!-- U TURN Shirt -->
-<div class="card" data-id="p1">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/CsXxNgdN/IMG-9403.jpg" alt="U TURN Shirt">
+<div class="card" data-id="p1" data-category="shirt">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/CsXxNgdN/IMG-9403.jpg" alt="U TURN Shirt" onclick="openProductModal('p1')">
 <div class="info">
 <h3><a href="https://amzn.to/4ySrwEm" target="_blank">U TURN Men's Casual Printed Striped Shirt</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.2</span>
+<span>1.4k+ sold</span>
+</div>
 <div class="price-box">
 <span class="price">₹397</span>
 <span class="mrp">₹1599</span>
@@ -541,11 +654,15 @@ TrendyFits
 </div>
 
 <!-- Zombom Shirt -->
-<div class="card" data-id="p2">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/352WYftk/IMG-9404.jpg" alt="Zombom Shirt">
+<div class="card" data-id="p2" data-category="shirt">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/352WYftk/IMG-9404.jpg" alt="Zombom Shirt" onclick="openProductModal('p2')">
 <div class="info">
 <h3><a href="https://amzn.to/3Tvv6UQ" target="_blank">Zombom Men's Regular Fit Vertical Striped Shirt</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.4</span>
+<span>2.1k+ sold</span>
+</div>
 <div class="price-box">
 <span class="price">₹799</span>
 <span class="mrp">₹2549</span>
@@ -556,11 +673,15 @@ TrendyFits
 </div>
 
 <!-- Afflatus Shirt -->
-<div class="card" data-id="p3">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/PZy1Tz2y/IMG-9405.jpg" alt="Afflatus Shirt">
+<div class="card" data-id="p3" data-category="shirt">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/PZy1Tz2y/IMG-9405.jpg" alt="Afflatus Shirt" onclick="openProductModal('p3')">
 <div class="info">
 <h3><a href="https://amzn.to/44WK9cy" target="_blank">Afflatus Men's Striped Casual Regular Fit Shirt</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.1</span>
+<span>950+ sold</span>
+</div>
 <div class="price-box">
 <span class="price">₹474</span>
 <span class="mrp">₹1999</span>
@@ -571,11 +692,15 @@ TrendyFits
 </div>
 
 <!-- boAt Earbuds -->
-<div class="card" data-id="p4">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/93z7R3KT/IMG-9406.jpg" alt="boAt Earbuds">
+<div class="card" data-id="p4" data-category="gadget">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/93z7R3KT/IMG-9406.jpg" alt="boAt Earbuds" onclick="openProductModal('p4')">
 <div class="info">
 <h3><a href="https://amzn.to/4g5jCjn" target="_blank">boAt Airdopes Prime 800D Earbuds</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.5</span>
+<span>5.3k+ sold</span>
+</div>
 <div class="price-box">
 <span class="price">₹1,599</span>
 <span class="mrp">₹4,599</span>
@@ -586,11 +711,15 @@ TrendyFits
 </div>
 
 <!-- boAt Smartwatch -->
-<div class="card" data-id="p5">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/gLWDvtJG/IMG-9407.jpg" alt="boAt Smartwatch">
+<div class="card" data-id="p5" data-category="gadget">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/gLWDvtJG/IMG-9407.jpg" alt="boAt Smartwatch" onclick="openProductModal('p5')">
 <div class="info">
 <h3><a href="https://amzn.to/3S9JAcq" target="_blank">boAt Lunar Discovery Smartwatch</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.3</span>
+<span>3.8k+ sold</span>
+</div>
 <div class="price-box">
 <span class="price">₹1,460</span>
 <span class="mrp">₹8,499</span>
@@ -612,44 +741,60 @@ TrendyFits
 <div class="product-grid">
 
 <!-- 1) Buda Jeans Co -->
-<div class="card" data-id="p6">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/k25tDR79/IMG-9408.jpg" alt="Buda Jeans Co Polo T-Shirt">
+<div class="card" data-id="p6" data-category="tshirt">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/k25tDR79/IMG-9408.jpg" alt="Buda Jeans Co Polo T-Shirt" onclick="openProductModal('p6')">
 <div class="info">
 <h3><a href="https://ajiio.in/8CEqpia" target="_blank">Buda Jeans Co Polo T-Shirt</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.2</span>
+<span>1.1k+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
 <a class="shop" href="https://ajiio.in/8CEqpia" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- 2) JOHN PLAYERS -->
-<div class="card" data-id="p7">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/PsszVPq2/IMG-9409.jpg" alt="JOHN PLAYERS Checked Shirt">
+<div class="card" data-id="p7" data-category="shirt">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/PsszVPq2/IMG-9409.jpg" alt="JOHN PLAYERS Checked Shirt" onclick="openProductModal('p7')">
 <div class="info">
 <h3><a href="https://ajiio.in/D8JLAG7" target="_blank">John Players Checked Shirt</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.5</span>
+<span>2.4k+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
 <a class="shop" href="https://ajiio.in/D8JLAG7" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- 3) RODEIZ -->
-<div class="card" data-id="p8">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/HfmBR0dY/IMG-9410.jpg" alt="RODEIZ Casual Shirt">
+<div class="card" data-id="p8" data-category="shirt">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/HfmBR0dY/IMG-9410.jpg" alt="RODEIZ Casual Shirt" onclick="openProductModal('p8')">
 <div class="info">
 <h3><a href="https://fktr.in/kWbUm9H" target="_blank">RODEIZ Casual Shirt</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.0</span>
+<span>820+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹246</span><span class="off">78% off</span></div>
 <a class="shop" href="https://fktr.in/kWbUm9H" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- 4) RED TAPE -->
-<div class="card" data-id="p9">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/Qj1X4n5t/IMG-9411.jpg" alt="RED TAPE Running Shoes">
+<div class="card" data-id="p9" data-category="shoes">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/Qj1X4n5t/IMG-9411.jpg" alt="RED TAPE Running Shoes" onclick="openProductModal('p9')">
 <div class="info">
 <h3><a href="https://ajiio.in/sd0I9n5" target="_blank">RED TAPE Running Shoes</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.6</span>
+<span>4.9k+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
 <a class="shop" href="https://ajiio.in/sd0I9n5" target="_blank">Grab Now</a>
 </div>
@@ -665,21 +810,29 @@ TrendyFits
 </div>
 <div class="product-grid">
 
-<div class="card" data-id="p10">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/k25tDR79/IMG-9408.jpg" alt="Buda Jeans Co Polo T-Shirt">
+<div class="card" data-id="p10" data-category="tshirt">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/k25tDR79/IMG-9408.jpg" alt="Buda Jeans Co Polo T-Shirt" onclick="openProductModal('p10')">
 <div class="info">
 <h3><a href="https://ajiio.in/8CEqpia" target="_blank">Buda Jeans Co Polo T-Shirt</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.2</span>
+<span>1.1k+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
 <a class="shop" href="https://ajiio.in/8CEqpia" target="_blank">Grab Now</a>
 </div>
 </div>
 
-<div class="card" data-id="p11">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/PsszVPq2/IMG-9409.jpg" alt="JOHN PLAYERS Checked Shirt">
+<div class="card" data-id="p11" data-category="shirt">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/PsszVPq2/IMG-9409.jpg" alt="JOHN PLAYERS Checked Shirt" onclick="openProductModal('p11')">
 <div class="info">
 <h3><a href="https://ajiio.in/D8JLAG7" target="_blank">John Players Checked Shirt</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.5</span>
+<span>2.4k+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
 <a class="shop" href="https://ajiio.in/D8JLAG7" target="_blank">Grab Now</a>
 </div>
@@ -696,22 +849,30 @@ TrendyFits
 <div class="product-grid">
 
 <!-- 5) AVAASA -->
-<div class="card" data-id="p12">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/Y7fRNZT9/IMG-9412.jpg" alt="AVAASA Floral Kurta">
+<div class="card" data-id="p12" data-category="women">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/Y7fRNZT9/IMG-9412.jpg" alt="AVAASA Floral Kurta" onclick="openProductModal('p12')">
 <div class="info">
 <h3><a href="https://ajiio.in/yHUXUZc" target="_blank">AVAASA Floral Kurta</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.3</span>
+<span>3.1k+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹254</span><span class="off">49% off</span></div>
 <a class="shop" href="https://ajiio.in/yHUXUZc" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- 6) KOTTY -->
-<div class="card" data-id="p13">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/xdtmKvN/IMG-9413.jpg" alt="KOTTY Flared Trousers">
+<div class="card" data-id="p13" data-category="women">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/xdtmKvN/IMG-9413.jpg" alt="KOTTY Flared Trousers" onclick="openProductModal('p13')">
 <div class="info">
 <h3><a href="https://ajiio.in/7cg3H6N" target="_blank">KOTTY Flared Trousers</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.1</span>
+<span>1.9k+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹280</span><span class="off">86% off</span></div>
 <a class="shop" href="https://ajiio.in/7cg3H6N" target="_blank">Grab Now</a>
 </div>
@@ -727,16 +888,32 @@ TrendyFits
 </div>
 <div class="product-grid">
 
-<div class="card" data-id="p14">
-<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
-<img src="https://i.ibb.co/Qj1X4n5t/IMG-9411.jpg" alt="RED TAPE Running Shoes">
+<div class="card" data-id="p14" data-category="shoes">
+<button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
+<img src="https://i.ibb.co/Qj1X4n5t/IMG-9411.jpg" alt="RED TAPE Running Shoes" onclick="openProductModal('p14')">
 <div class="info">
 <h3><a href="https://ajiio.in/sd0I9n5" target="_blank">RED TAPE Running Shoes</a></h3>
+<div class="product-stats">
+<span class="rating-badge">★ 4.6</span>
+<span>4.9k+ sold</span>
+</div>
 <div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
 <a class="shop" href="https://ajiio.in/sd0I9n5" target="_blank">Grab Now</a>
 </div>
 </div>
 
+</div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal-overlay" id="productModal">
+<div class="modal-content">
+<button class="close-modal" onclick="closeProductModal()">&times;</button>
+<div id="modalProductDetails"></div>
+<div class="similar-section">
+<h3>Similar Products You May Like</h3>
+<div class="similar-grid" id="similarProductsGrid"></div>
+</div>
 </div>
 </div>
 
@@ -760,20 +937,29 @@ TrendyFits
 <script>
 let wishlist = [];
 
-function toggleWishlist(btn) {
+function toggleWishlist(event, btn) {
+event.stopPropagation();
 const card = btn.closest('.card');
 const cardId = card.getAttribute('data-id');
 
+// Sync state across all duplicate/cloned cards with same data-id
+const allCorrespondingCards = document.querySelectorAll(`.card[data-id="${cardId}"]`);
+
+allCorrespondingCards.forEach(c => {
+const b = c.querySelector('.wishlist-btn');
 if (btn.classList.contains('active')) {
-btn.classList.remove('active');
-btn.innerText = '♡';
+b.classList.remove('active');
+b.innerText = '♡';
+} else {
+b.classList.add('active');
+b.innerText = '❤️';
+}
+});
+
+if (wishlist.includes(cardId)) {
 wishlist = wishlist.filter(id => id !== cardId);
 } else {
-btn.classList.add('active');
-btn.innerText = '❤️';
-if (!wishlist.includes(cardId)) {
 wishlist.push(cardId);
-}
 }
 updateWishlistUI();
 }
@@ -790,16 +976,16 @@ return;
 
 wishlistGrid.innerHTML = '';
 wishlist.forEach(id => {
-const originalCard = document.querySelector(`.card[data-id="${id}"]`);
+const originalCard = document.querySelector(`.container:not(#searchResultsContainer):not(#wishlist-section) .card[data-id="${id}"]`);
 if (originalCard) {
 const clonedCard = originalCard.cloneNode(true);
 const clonedBtn = clonedCard.querySelector('.wishlist-btn');
 clonedBtn.classList.add('active');
 clonedBtn.innerText = '❤️';
-clonedBtn.onclick = function() {
-originalCard.querySelector('.wishlist-btn').click();
+clonedBtn.onclick = function(e) {
+toggleWishlist(e, this);
 };
-wishlistgrid.appendChild(clonedCard);
+wishlistGrid.appendChild(clonedCard);
 }
 });
 }
@@ -819,7 +1005,6 @@ promoBanner.style.display = "flex";
 return;
 }
 
-// Hide Banners
 heroBanner.style.display = "none";
 promoBanner.style.display = "none";
 searchResultsContainer.style.display = "block";
@@ -834,22 +1019,16 @@ let title = card.querySelector('.info h3').innerText.toLowerCase();
 if (title.includes(query)) {
 matchFound = true;
 let clonedCard = card.cloneNode(true);
-// Re-bind wishlist functionality on cloned card
+let cardId = card.getAttribute('data-id');
 let origBtn = card.querySelector('.wishlist-btn');
 let clonedBtn = clonedCard.querySelector('.wishlist-btn');
-if (origBtn.classList.contains('active')) {
+
+if (wishlist.includes(cardId)) {
 clonedBtn.classList.add('active');
 clonedBtn.innerText = '❤️';
 }
-clonedBtn.onclick = function() {
-origBtn.click();
-if(origBtn.classList.contains('active')) {
-clonedBtn.classList.add('active');
-clonedBtn.innerText = '❤️';
-} else {
-clonedBtn.classList.remove('active');
-clonedBtn.innerText = '♡';
-}
+clonedBtn.onclick = function(e) {
+toggleWishlist(e, this);
 };
 searchResultsGrid.appendChild(clonedCard);
 }
@@ -866,6 +1045,81 @@ document.getElementById('searchResultsContainer').style.display = "none";
 document.getElementById('heroBannerSection').style.display = "block";
 document.getElementById('promoBannerSection').style.display = "flex";
 window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// PRODUCT DETAIL MODAL & SIMILAR SUGGESTIONS
+function openProductModal(cardId) {
+const targetCard = document.querySelector(`.container:not(#searchResultsContainer):not(#wishlist-section) .card[data-id="${cardId}"]`);
+if(!targetCard) return;
+
+const imgSrc = targetCard.querySelector('img').src;
+const titleHTML = targetCard.querySelector('.info h3').innerHTML;
+const priceBoxHTML = targetCard.querySelector('.price-box').innerHTML;
+const offText = targetCard.querySelector('.off') ? targetCard.querySelector('.off').outerHTML : '';
+const shopLinkHTML = targetCard.querySelector('.shop').outerHTML;
+const statsHTML = targetCard.querySelector('.product-stats').outerHTML;
+const category = targetCard.getAttribute('data-category');
+
+const modalDetails = document.getElementById('modalProductDetails');
+modalDetails.innerHTML = `
+<div class="modal-body-flex">
+<div class="modal-img-wrap">
+<img src="${imgSrc}" alt="Product Image">
+</div>
+<div class="modal-details">
+<div>
+<h2>${targetCard.querySelector('.info h3 a').innerText}</h2>
+${statsHTML}
+<div class="price-box" style="margin: 10px 0;">${priceBoxHTML}</div>
+${offText}
+<p style="font-size: 13px; color: #aaa; margin: 10px 0;">Inclusive of all taxes. Fast delivery available with easy 7-day return policy.</p>
+</div>
+<div style="margin-top: 15px;">
+${shopLinkHTML}
+</div>
+</div>
+</div>
+`;
+
+// Populate Similar Products
+const similarGrid = document.getElementById('similarProductsGrid');
+similarGrid.innerHTML = '';
+
+const allCards = document.querySelectorAll('.container:not(#searchResultsContainer):not(#wishlist-section) .card');
+let count = 0;
+allCards.forEach(card => {
+if(card.getAttribute('data-category') === category && card.getAttribute('data-id') !== cardId && count < 4) {
+let cloned = card.cloneNode(true);
+let cId = card.getAttribute('data-id');
+let b = cloned.querySelector('.wishlist-btn');
+if(wishlist.includes(cId)) {
+b.classList.add('active');
+b.innerText = '❤️';
+}
+b.onclick = function(e) { toggleWishlist(e, this); };
+cloned.querySelector('img').onclick = function() { openProductModal(cId); };
+similarGrid.appendChild(cloned);
+count++;
+}
+});
+
+if(count === 0) {
+similarGrid.innerHTML = '<div style="font-size: 13px; color: #888;">No similar items available right now.</div>';
+}
+
+document.getElementById('productModal').style.display = 'flex';
+}
+
+function closeProductModal() {
+document.getElementById('productModal').style.display = 'none';
+}
+
+// Close modal on background click
+window.onclick = function(event) {
+const modal = document.getElementById('productModal');
+if (event.target === modal) {
+modal.style.display = 'none';
+}
 }
 </script>
 
