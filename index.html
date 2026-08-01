@@ -22,7 +22,7 @@ color: #212121;
 
 /* Header / Navbar */
 header{
-background: #2874f0; /* Flipkart Blue style */
+background: #2874f0;
 color:white;
 padding: 12px 20px;
 display: flex;
@@ -54,7 +54,6 @@ color: #ffe11b;
 flex: 1;
 max-width: 550px;
 margin: 0 20px;
-position: relative;
 }
 
 .search-bar input {
@@ -64,7 +63,6 @@ border-radius: 2px;
 border: none;
 outline: none;
 font-size: 14px;
-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .nav-links {
@@ -74,7 +72,7 @@ font-size: 14px;
 font-weight: 600;
 }
 
-/* Categories Bar (Myntra/Flipkart style) */
+/* Categories Bar */
 .categories-nav {
 background: white;
 display: flex;
@@ -99,7 +97,7 @@ transition: color 0.2s;
 color: #2874f0;
 }
 
-/* Hero Banner Slider Area */
+/* Hero Banner */
 .hero-banner {
 max-width: 1200px;
 margin: 15px auto;
@@ -125,9 +123,6 @@ padding: 0 15px;
 background: white;
 padding: 15px 20px;
 border-radius: 8px 8px 0 0;
-display: flex;
-justify-content: space-between;
-align-items: center;
 border-bottom: 1px solid #f0f0f0;
 }
 
@@ -137,28 +132,40 @@ font-weight: 600;
 color: #212121;
 }
 
-/* Product Grid */
+/* Horizontal Scroll / Grid Layout */
 .product-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+display: flex;
 gap: 15px;
 background: white;
 padding: 15px;
 border-radius: 0 0 8px 8px;
 box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 margin-bottom: 25px;
+overflow-x: auto;
+scroll-behavior: smooth;
+}
+
+.product-grid::-webkit-scrollbar {
+height: 6px;
+}
+
+.product-grid::-webkit-scrollbar-thumb {
+background: #ccc;
+border-radius: 4px;
 }
 
 .card {
 background: white;
 border-radius: 6px;
-overflow: hidden;
 border: 1px solid #f0f0f0;
 padding: 12px;
-transition: transform 0.2s ease, box-shadow 0.2s ease;
+min-width: 210px;
+max-width: 210px;
+flex: 0 0 auto;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
@@ -168,8 +175,9 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 
 .card img{
 width:100%;
-height:200px;
-object-fit:contain;
+height:180px;
+object-fit:cover;
+border-radius: 4px;
 margin-bottom: 10px;
 }
 
@@ -205,7 +213,7 @@ font-size: 13px;
 .shop{
 display:block;
 text-align:center;
-background:#ff9f00; /* Flipkart Yellow/Orange style */
+background:#ff9f00;
 color:white;
 padding:10px;
 border-radius:4px;
@@ -233,7 +241,6 @@ footer p {
 color: #878787;
 margin-top: 5px;
 }
-
 </style>
 </head>
 
