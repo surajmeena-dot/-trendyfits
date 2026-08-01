@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>TrendyFits | Fashion Store</title>
+<meta charset="UTF-8">
+<title>TrendyFits | Online Shopping Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -10,305 +11,455 @@
 *{
 box-sizing:border-box;
 font-family:'Poppins', sans-serif;
+margin: 0;
+padding: 0;
 }
 
 body{
-margin:0;
-background:#f4f6f9;
+background:#f1f3f6;
+color: #212121;
 }
 
+/* Header / Navbar */
 header{
-background: linear-gradient(135deg, #111111, #2d2d2d);
+background: #2874f0; /* Flipkart Blue style */
 color:white;
-padding: 25px;
-text-align:center;
-font-size:30px;
-font-weight:700;
-letter-spacing: 1px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+padding: 12px 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.tagline{
-text-align:center;
-padding:12px;
-color:#666;
-font-size: 14px;
-font-weight: 500;
+.logo-area {
+font-size: 24px;
+font-weight: 700;
+font-style: italic;
+display: flex;
+flex-direction: column;
+line-height: 1;
 }
 
-.search{
-padding:15px;
-max-width: 600px;
-margin: 0 auto;
+.logo-sub {
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+color: #ffe11b;
 }
 
-.search input{
-width:100%;
-padding:14px 20px;
-border-radius:30px;
-border:1px solid #ddd;
+.search-bar {
+flex: 1;
+max-width: 550px;
+margin: 0 20px;
+position: relative;
+}
+
+.search-bar input {
+width: 100%;
+padding: 10px 15px;
+border-radius: 2px;
+border: none;
 outline: none;
-box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-transition: all 0.3s ease;
+font-size: 14px;
+box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-.search input:focus {
-border-color: #111;
-box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+.nav-links {
+display: flex;
+gap: 20px;
+font-size: 14px;
+font-weight: 600;
 }
 
-.categories{
-display:flex;
-gap:10px;
-padding:10px 15px;
-overflow:auto;
+/* Categories Bar (Myntra/Flipkart style) */
+.categories-nav {
+background: white;
+display: flex;
 justify-content: center;
+gap: 30px;
+padding: 12px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+overflow-x: auto;
 }
 
-.categories button{
-border:1px solid #ddd;
-background:white;
-padding:10px 20px;
-border-radius:25px;
-font-weight: 500;
+.cat-item {
+font-size: 14px;
+font-weight: 600;
+color: #384144;
 cursor: pointer;
-transition: all 0.3s ease;
 white-space: nowrap;
+text-decoration: none;
+transition: color 0.2s;
 }
 
-.categories button:hover {
-background: #111;
-color: white;
-border-color: #111;
+.cat-item:hover {
+color: #2874f0;
 }
 
-.feed{
-display:grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap:20px;
-padding:20px;
+/* Hero Banner Slider Area */
+.hero-banner {
 max-width: 1200px;
-margin: 0 auto;
+margin: 15px auto;
+padding: 0 15px;
 }
 
-.card{
-background:white;
-border-radius:16px;
-overflow:hidden;
-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-border: 1px solid #eaeaea;
+.hero-banner img {
+width: 100%;
+height: 250px;
+object-fit: cover;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.card:hover{
-transform: translateY(-6px);
-box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+/* Section Containers */
+.container {
+max-width: 1200px;
+margin: 20px auto;
+padding: 0 15px;
+}
+
+.section-header {
+background: white;
+padding: 15px 20px;
+border-radius: 8px 8px 0 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid #f0f0f0;
+}
+
+.section-header h2 {
+font-size: 20px;
+font-weight: 600;
+color: #212121;
+}
+
+/* Product Grid */
+.product-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 15px;
+background: white;
+padding: 15px;
+border-radius: 0 0 8px 8px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+margin-bottom: 25px;
+}
+
+.card {
+background: white;
+border-radius: 6px;
+overflow: hidden;
+border: 1px solid #f0f0f0;
+padding: 12px;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.card:hover {
+transform: translateY(-4px);
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .card img{
 width:100%;
-height:240px;
-object-fit:cover;
-transition: transform 0.5s ease;
-}
-
-.card:hover img {
-transform: scale(1.03);
-}
-
-.info{
-padding:16px;
+height:200px;
+object-fit:contain;
+margin-bottom: 10px;
 }
 
 .info h3{
-font-size:15px;
-font-weight: 600;
-color: #222;
-margin: 0 0 8px 0;
+font-size:14px;
+font-weight: 500;
+color: #212121;
+margin-bottom: 8px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.price-box {
+display: flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 10px;
 }
 
 .price{
-font-size:18px;
+font-size:16px;
 font-weight:700;
-color: #111;
-display: inline-block;
-margin-right: 10px;
+color: #212121;
 }
 
 .off{
-color:#16a34a;
+color:#388e3c;
 font-weight: 600;
-font-size: 14px;
-background: #ecfdf5;
-padding: 2px 8px;
-border-radius: 6px;
-display: inline-block;
+font-size: 13px;
 }
 
 .shop{
 display:block;
 text-align:center;
-background:#111;
+background:#ff9f00; /* Flipkart Yellow/Orange style */
 color:white;
-padding:12px;
-border-radius:10px;
+padding:10px;
+border-radius:4px;
 text-decoration:none;
 font-weight: 600;
-margin-top:14px;
-transition: background 0.3s ease, transform 0.2s ease;
+font-size: 14px;
+transition: background 0.2s;
 }
 
 .shop:hover{
-background:#ff3366;
+background:#fb641b;
 }
 
+/* Footer */
 footer{
-text-align:center;
-padding:25px;
-color:#777;
+background: #172337;
+color: white;
+text-align: center;
+padding: 30px 20px;
+margin-top: 40px;
 font-size: 14px;
-border-top: 1px solid #ddd;
-margin-top: 30px;
-background: #fff;
+}
+
+footer p {
+color: #878787;
+margin-top: 5px;
 }
 
 </style>
-
 </head>
 
 <body>
 
+<!-- Top Header -->
 <header>
-✨ TrendyFits
+<div class="logo-area">
+TrendyFits
+<span class="logo-sub">Explore Plus <span style="color:#ffe11b;">✦</span></span>
+</div>
+<div class="search-bar">
+<input placeholder="Search for products, brands and more">
+</div>
+<div class="nav-links">
+<span>👤 Account</span>
+<span>🛒 Cart</span>
+</div>
 </header>
 
-<div class="tagline">
-Trending Fashion | Shop Your Style
+<!-- Category Navigation Bar -->
+<div class="categories-nav">
+<a href="#trending" class="cat-item">🔥 Top Trending</a>
+<a href="#men" class="cat-item">👔 Men's Wear</a>
+<a href="#women" class="cat-item">👗 Women's Ethnic & Western</a>
+<a href="#shoes" class="cat-item">👟 Footwear</a>
 </div>
 
-<div class="search">
-<input placeholder="Search fashion...">
+<!-- Banner Section -->
+<div class="hero-banner">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Banner">
 </div>
 
-<div class="categories">
-<button>🔥 Trending</button>
-<button>👔 Men</button>
-<button>👗 Women</button>
-<button>👟 Shoes</button>
+<!-- SECTION 1: TRENDING PRODUCTS -->
+<div class="container" id="trending">
+<div class="section-header">
+<h2>Suggested For You</h2>
 </div>
-
-
-<div class="feed">
-
+<div class="product-grid">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Buda Jeans Co Polo T-Shirt</h3>
-<div>
+<div class="price-box">
 <span class="price">₹310</span>
-<span class="off">69% OFF</span>
+<span class="off">69% off</span>
 </div>
-<a class="shop" href="https://ajiio.in/8CEqpia">Shop Now</a>
+<a class="shop" href="https://ajiio.in/8CEqpia">Grab Now</a>
 </div>
 </div>
-
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>John Players Checked Shirt</h3>
-<div>
+<div class="price-box">
 <span class="price">₹618</span>
-<span class="off">70% OFF</span>
+<span class="off">70% off</span>
 </div>
-<a class="shop" href="https://ajiio.in/D8JLAG7">Shop Now</a>
+<a class="shop" href="https://ajiio.in/D8JLAG7">Grab Now</a>
 </div>
 </div>
-
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <div class="info">
 <h3>RODEIZ Casual Shirt</h3>
-<div>
+<div class="price-box">
 <span class="price">₹246</span>
-<span class="off">78% OFF</span>
+<span class="off">78% off</span>
 </div>
-<a class="shop" href="https://fktr.in/kWbUm9H">Shop Now</a>
-</div>
-</div>
-
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1">
-<div class="info">
-<h3>AVAASA Floral Kurta</h3>
-<div>
-<span class="price">₹254</span>
-<span class="off">49% OFF</span>
-</div>
-<a class="shop" href="https://ajiio.in/yHUXUZc">Shop Now</a>
+<a class="shop" href="https://fktr.in/kWbUm9H">Grab Now</a>
 </div>
 </div>
-
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f">
-<div class="info">
-<h3>KOTTY Flared Trousers</h3>
-<div>
-<span class="price">₹280</span>
-<span class="off">86% OFF</span>
-</div>
-<a class="shop" href="https://ajiio.in/7cg3H6N">Shop Now</a>
-</div>
-</div>
-
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
-<div class="info">
-<h3>WANQUILA Women Top</h3>
-<div>
-<span class="price">₹324</span>
-<span class="off">87% OFF</span>
-</div>
-<a class="shop" href="https://ajiio.in/zKp77Lu">Shop Now</a>
-</div>
-</div>
-
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
 <div class="info">
 <h3>RED TAPE Running Shoes</h3>
-<div>
+<div class="price-box">
 <span class="price">₹1064</span>
-<span class="off">86% OFF</span>
+<span class="off">86% off</span>
 </div>
-<a class="shop" href="https://ajiio.in/sd0I9n5">Shop Now</a>
+<a class="shop" href="https://ajiio.in/sd0I9n5">Grab Now</a>
 </div>
 </div>
 
+</div>
+</div>
+
+
+<!-- SECTION 2: MEN'S FASHION -->
+<div class="container" id="men">
+<div class="section-header">
+<h2>Men's Best Styles</h2>
+</div>
+<div class="product-grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
+<div class="info">
+<h3>Buda Jeans Co Polo T-Shirt</h3>
+<div class="price-box">
+<span class="price">₹310</span>
+<span class="off">69% off</span>
+</div>
+<a class="shop" href="https://ajiio.in/8CEqpia">Grab Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
+<div class="info">
+<h3>John Players Checked Shirt</h3>
+<div class="price-box">
+<span class="price">₹618</span>
+<span class="off">70% off</span>
+</div>
+<a class="shop" href="https://ajiio.in/D8JLAG7">Grab Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+<div class="info">
+<h3>RODEIZ Casual Shirt</h3>
+<div class="price-box">
+<span class="price">₹246</span>
+<span class="off">78% off</span>
+</div>
+<a class="shop" href="https://fktr.in/kWbUm9H">Grab Now</a>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- SECTION 3: WOMEN'S FASHION -->
+<div class="container" id="women">
+<div class="section-header">
+<h2>Women's Trends & Ethnic</h2>
+</div>
+<div class="product-grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1">
+<div class="info">
+<h3>AVAASA Floral Kurta</h3>
+<div class="price-box">
+<span class="price">₹254</span>
+<span class="off">49% off</span>
+</div>
+<a class="shop" href="https://ajiio.in/yHUXUZc">Grab Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f">
+<div class="info">
+<h3>KOTTY Flared Trousers</h3>
+<div class="price-box">
+<span class="price">₹280</span>
+<span class="off">86% off</span>
+</div>
+<a class="shop" href="https://ajiio.in/7cg3H6N">Grab Now</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
+<div class="info">
+<h3>WANQUILA Women Top</h3>
+<div class="price-box">
+<span class="price">₹324</span>
+<span class="off">87% off</span>
+</div>
+<a class="shop" href="https://ajiio.in/zKp77Lu">Grab Now</a>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- SECTION 4: FOOTWEAR -->
+<div class="container" id="shoes">
+<div class="section-header">
+<h2>Footwear Store</h2>
+</div>
+<div class="product-grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
+<div class="info">
+<h3>RED TAPE Running Shoes</h3>
+<div class="price-box">
+<span class="price">₹1064</span>
+<span class="off">86% off</span>
+</div>
+<a class="shop" href="https://ajiio.in/sd0I9n5">Grab Now</a>
+</div>
+</div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772">
 <div class="info">
 <h3>ASIAN Sneakers</h3>
-<div>
+<div class="price-box">
 <span class="price">₹807</span>
-<span class="off">46% OFF</span>
+<span class="off">46% off</span>
 </div>
-<a class="shop" href="https://ajiio.in/x6cd5TV">Shop Now</a>
+<a class="shop" href="https://ajiio.in/x6cd5TV">Grab Now</a>
+</div>
+</div>
+
 </div>
 </div>
 
 
-</div>
-
+<!-- Footer -->
 <footer>
-© 2026 TrendyFits
+<h3>TrendyFits</h3>
+<p>Policies: Returns Policy | Terms of Use | Security | Privacy</p>
+<p>© 2026 TrendyFits. All Rights Reserved.</p>
 </footer>
 
 </body>
