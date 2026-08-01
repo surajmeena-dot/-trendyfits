@@ -71,6 +71,12 @@ display: flex;
 gap: 20px;
 font-size: 14px;
 font-weight: 600;
+align-items: center;
+}
+
+.nav-links a {
+color: white;
+text-decoration: none;
 }
 
 /* Categories Bar */
@@ -129,6 +135,30 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .banner-slide img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* Amazon / Flipkart Style Promotional Offer Banners */
+.promo-banner-container {
+max-width: 1200px;
+margin: 20px auto;
+padding: 0 15px;
+display: flex;
+gap: 15px;
+}
+
+.promo-card {
+flex: 1;
+height: 140px;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+position: relative;
+}
+
+.promo-card img {
 width: 100%;
 height: 100%;
 object-fit: cover;
@@ -212,22 +242,33 @@ transform: translateY(-4px);
 box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Wishlist Heart Icon */
+/* Wishlist Heart Icon Style */
 .wishlist-btn {
 position: absolute;
 top: 15px;
 right: 15px;
 background: white;
 border: none;
-font-size: 16px;
+font-size: 18px;
 cursor: pointer;
-width: 30px;
-height: 30px;
+width: 32px;
+height: 32px;
 border-radius: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
 box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+color: #ccc;
+transition: color 0.2s, transform 0.2s;
+z-index: 10;
+}
+
+.wishlist-btn.active {
+color: #ff3366;
+}
+
+.wishlist-btn:hover {
+transform: scale(1.1);
 }
 
 .card img{
@@ -293,6 +334,15 @@ transition: background 0.2s;
 background:#fb641b;
 }
 
+/* Empty Wishlist Message */
+.empty-msg {
+font-size: 14px;
+color: #878787;
+padding: 20px;
+text-align: center;
+width: 100%;
+}
+
 /* Mobile Bottom Navigation Bar */
 .mobile-bottom-nav {
 display: none;
@@ -330,6 +380,9 @@ display: flex;
 .nav-links {
 display: none;
 }
+.promo-banner-container {
+flex-direction: column;
+}
 }
 
 /* Footer */
@@ -361,14 +414,15 @@ TrendyFits
 <input placeholder="Search for products, brands and more">
 </div>
 <div class="nav-links">
-<span>👤 Account</span>
+<a href="#wishlist-section">❤️ Favorites (<span id="wishlist-count">0</span>)</a>
 <span>🛒 Cart</span>
 </div>
 </header>
 
 <!-- Category Navigation Bar -->
 <div class="categories-nav">
-<a href="#new-amazon" class="cat-item">⚡ New Amazon Deals</a>
+<a href="#wishlist-section" class="cat-item">❤️ My Favorites</a>
+<a href="#new-amazon" class="cat-item">⚡ Amazon Deals</a>
 <a href="#trending" class="cat-item">🔥 Top Trending</a>
 <a href="#men" class="cat-item">👔 Men's Wear</a>
 <a href="#women" class="cat-item">👗 Women's Fashion</a>
@@ -383,7 +437,28 @@ TrendyFits
 </div>
 </div>
 
-<!-- SECTION 0: NEW AMAZON PRODUCTS -->
+<!-- AMAZON / FLIPKART STYLE PROMO POSTER BANNERS -->
+<div class="promo-banner-container">
+<div class="promo-card">
+<img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a" alt="Mega Sale">
+</div>
+<div class="promo-card">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Fashion Fest">
+</div>
+</div>
+
+<!-- SECTION 0: MY FAVORITES / WISHLIST SECTION -->
+<div class="container" id="wishlist-section">
+<div class="section-header" style="background: #fff0f3;">
+<h2 style="color: #ff3366;">❤️ Your Favorite Products</h2>
+<div class="timer-box" style="background: #ffe6eb; color: #ff3366; border-color: #ffb3c6;">Saved Items</div>
+</div>
+<div class="product-grid" id="wishlist-grid">
+<div class="empty-msg">No favorites added yet! Click the heart icon (♡) on any product to save it here.</div>
+</div>
+</div>
+
+<!-- SECTION 1: NEW AMAZON PRODUCTS -->
 <div class="container" id="new-amazon">
 <div class="section-header">
 <h2>⚡ New Special Amazon Deals</h2>
@@ -392,8 +467,8 @@ TrendyFits
 <div class="product-grid">
 
 <!-- U TURN Shirt -->
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p1">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <div class="info">
 <h3>U TURN Men's Casual Shirt</h3>
@@ -407,8 +482,8 @@ TrendyFits
 </div>
 
 <!-- Zombom Shirt -->
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p2">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>Zombom Regular Fit Striped Shirt</h3>
@@ -422,8 +497,8 @@ TrendyFits
 </div>
 
 <!-- Afflatus Shirt -->
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p3">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Afflatus Men's Striped Shirt</h3>
@@ -437,8 +512,8 @@ TrendyFits
 </div>
 
 <!-- boAt Earbuds -->
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p4">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df">
 <div class="info">
 <h3>boAt Airdopes Prime 800D</h3>
@@ -452,8 +527,8 @@ TrendyFits
 </div>
 
 <!-- boAt Smartwatch -->
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p5">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30">
 <div class="info">
 <h3>boAt Lunar Discovery Smartwatch</h3>
@@ -469,7 +544,7 @@ TrendyFits
 </div>
 </div>
 
-<!-- SECTION 1: TRENDING PRODUCTS (PREVIOUS) -->
+<!-- SECTION 2: TRENDING PRODUCTS (PREVIOUS) -->
 <div class="container" id="trending">
 <div class="section-header">
 <h2>Suggested For You</h2>
@@ -477,43 +552,43 @@ TrendyFits
 </div>
 <div class="product-grid">
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p6">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Buda Jeans Co Polo T-Shirt</h3>
 <div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
-<a class="shop" href="https://ajiio.in/8CEqpia">Grab Now</a>
+<a class="shop" href="https://ajiio.in/8CEqpia" target="_blank">Grab Now</a>
 </div>
 </div>
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p7">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>John Players Checked Shirt</h3>
 <div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
-<a class="shop" href="https://ajiio.in/D8JLAG7">Grab Now</a>
+<a class="shop" href="https://ajiio.in/D8JLAG7" target="_blank">Grab Now</a>
 </div>
 </div>
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p8">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
 <div class="info">
 <h3>RODEIZ Casual Shirt</h3>
 <div class="price-box"><span class="price">₹246</span><span class="off">78% off</span></div>
-<a class="shop" href="https://fktr.in/kWbUm9H">Grab Now</a>
+<a class="shop" href="https://fktr.in/kWbUm9H" target="_blank">Grab Now</a>
 </div>
 </div>
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p9">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
 <div class="info">
 <h3>RED TAPE Running Shoes</h3>
 <div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
-<a class="shop" href="https://ajiio.in/sd0I9n5">Grab Now</a>
+<a class="shop" href="https://ajiio.in/sd0I9n5" target="_blank">Grab Now</a>
 </div>
 </div>
 
@@ -521,40 +596,30 @@ TrendyFits
 </div>
 
 
-<!-- SECTION 2: MEN'S FASHION -->
+<!-- SECTION 3: MEN'S FASHION -->
 <div class="container" id="men">
 <div class="section-header">
 <h2>Men's Best Styles</h2>
 </div>
 <div class="product-grid">
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p10">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
 <div class="info">
 <h3>Buda Jeans Co Polo T-Shirt</h3>
 <div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
-<a class="shop" href="https://ajiio.in/8CEqpia">Grab Now</a>
+<a class="shop" href="https://ajiio.in/8CEqpia" target="_blank">Grab Now</a>
 </div>
 </div>
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p11">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1598032895397-b9472444bf93">
 <div class="info">
 <h3>John Players Checked Shirt</h3>
 <div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
-<a class="shop" href="https://ajiio.in/D8JLAG7">Grab Now</a>
-</div>
-</div>
-
-<div class="card">
-<button class="wishlist-btn">♡</button>
-<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
-<div class="info">
-<h3>RODEIZ Casual Shirt</h3>
-<div class="price-box"><span class="price">₹246</span><span class="off">78% off</span></div>
-<a class="shop" href="https://fktr.in/kWbUm9H">Grab Now</a>
+<a class="shop" href="https://ajiio.in/D8JLAG7" target="_blank">Grab Now</a>
 </div>
 </div>
 
@@ -562,40 +627,30 @@ TrendyFits
 </div>
 
 
-<!-- SECTION 3: WOMEN'S FASHION -->
+<!-- SECTION 4: WOMEN'S FASHION -->
 <div class="container" id="women">
 <div class="section-header">
 <h2>Women's Trends & Ethnic</h2>
 </div>
 <div class="product-grid">
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p12">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1">
 <div class="info">
 <h3>AVAASA Floral Kurta</h3>
 <div class="price-box"><span class="price">₹254</span><span class="off">49% off</span></div>
-<a class="shop" href="https://ajiio.in/yHUXUZc">Grab Now</a>
+<a class="shop" href="https://ajiio.in/yHUXUZc" target="_blank">Grab Now</a>
 </div>
 </div>
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p13">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f">
 <div class="info">
 <h3>KOTTY Flared Trousers</h3>
 <div class="price-box"><span class="price">₹280</span><span class="off">86% off</span></div>
-<a class="shop" href="https://ajiio.in/7cg3H6N">Grab Now</a>
-</div>
-</div>
-
-<div class="card">
-<button class="wishlist-btn">♡</button>
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
-<div class="info">
-<h3>WANQUILA Women Top</h3>
-<div class="price-box"><span class="price">₹324</span><span class="off">87% off</span></div>
-<a class="shop" href="https://ajiio.in/zKp77Lu">Grab Now</a>
+<a class="shop" href="https://ajiio.in/7cg3H6N" target="_blank">Grab Now</a>
 </div>
 </div>
 
@@ -603,30 +658,20 @@ TrendyFits
 </div>
 
 
-<!-- SECTION 4: FOOTWEAR -->
+<!-- SECTION 5: FOOTWEAR -->
 <div class="container" id="shoes">
 <div class="section-header">
 <h2>Footwear Store</h2>
 </div>
 <div class="product-grid">
 
-<div class="card">
-<button class="wishlist-btn">♡</button>
+<div class="card" data-id="p14">
+<button class="wishlist-btn" onclick="toggleWishlist(this)">♡</button>
 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff">
 <div class="info">
 <h3>RED TAPE Running Shoes</h3>
 <div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
-<a class="shop" href="https://ajiio.in/sd0I9n5">Grab Now</a>
-</div>
-</div>
-
-<div class="card">
-<button class="wishlist-btn">♡</button>
-<img src="https://images.unsplash.com/photo-1549298916-b41d501d3772">
-<div class="info">
-<h3>ASIAN Sneakers</h3>
-<div class="price-box"><span class="price">₹807</span><span class="off">46% off</span></div>
-<a class="shop" href="https://ajiio.in/x6cd5TV">Grab Now</a>
+<a class="shop" href="https://ajiio.in/sd0I9n5" target="_blank">Grab Now</a>
 </div>
 </div>
 
@@ -636,10 +681,10 @@ TrendyFits
 <!-- Mobile Bottom Navigation Bar -->
 <div class="mobile-bottom-nav">
 <a href="#" class="nav-item"><span class="icon">🏠</span>Home</a>
+<a href="#wishlist-section" class="nav-item"><span class="icon">❤️</span>Favorites</a>
 <a href="#new-amazon" class="nav-item"><span class="icon">⚡</span>Deals</a>
 <a href="#trending" class="nav-item"><span class="icon">🔥</span>Trending</a>
 <a href="#men" class="nav-item"><span class="icon">👔</span>Men</a>
-<a href="#women" class="nav-item"><span class="icon">👗</span>Women</a>
 </div>
 
 <!-- Footer -->
@@ -648,6 +693,59 @@ TrendyFits
 <p>Policies: Returns Policy | Terms of Use | Security | Privacy</p>
 <p>© 2026 TrendyFits. All Rights Reserved.</p>
 </footer>
+
+<!-- JavaScript for Interactive Wishlist System -->
+<script>
+let wishlist = [];
+
+function toggleWishlist(btn) {
+const card = btn.closest('.card');
+const cardId = card.getAttribute('data-id');
+
+if (btn.classList.contains('active')) {
+// Remove from wishlist
+btn.classList.remove('active');
+btn.innerText = '♡';
+wishlist = wishlist.filter(id => id !== cardId);
+} else {
+// Add to wishlist
+btn.classList.add('active');
+btn.innerText = '❤️';
+if (!wishlist.includes(cardId)) {
+wishlist.push(cardId);
+}
+}
+updateWishlistUI();
+}
+
+function updateWishlistUI() {
+const wishlistGrid = document.getElementById('wishlist-grid');
+const countSpan = document.getElementById('wishlist-count');
+countSpan.innerText = wishlist.length;
+
+if (wishlist.length === 0) {
+wishlistGrid.innerHTML = '<div class="empty-msg">No favorites added yet! Click the heart icon (♡) on any product to save it here.</div>';
+return;
+}
+
+wishlistGrid.innerHTML = '';
+wishlist.forEach(id => {
+const originalCard = document.querySelector(`.card[data-id="${id}"]`);
+if (originalCard) {
+const clonedCard = originalCard.cloneNode(true);
+// Ensure heart remains active in the wishlist section
+const clonedBtn = clonedCard.querySelector('.wishlist-btn');
+clonedBtn.classList.add('active');
+clonedBtn.innerText = '❤️';
+clonedBtn.onclick = function() {
+// Remove from main list when clicked inside wishlist
+originalCard.querySelector('.wishlist-btn').click();
+};
+wishlistGrid.appendChild(clonedCard);
+}
+});
+}
+</script>
 
 </body>
 </html>
