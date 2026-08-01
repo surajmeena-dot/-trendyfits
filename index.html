@@ -376,8 +376,26 @@ text-decoration: line-through;
 color:#4caf50;
 font-weight: 600;
 font-size: 12px;
-margin-bottom: 8px;
+margin-bottom: 4px;
 display: block;
+}
+
+/* Offer & Coupon Tag Styling */
+.offer-badge {
+background: #282109;
+color: #ffd700;
+border: 1px dashed #ffd700;
+font-size: 10px;
+padding: 3px 6px;
+border-radius: 4px;
+margin-bottom: 8px;
+display: flex;
+align-items: center;
+gap: 4px;
+font-weight: 500;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .shop{
@@ -482,6 +500,75 @@ justify-content: space-between;
 font-size: 20px;
 margin-bottom: 10px;
 color: #fff;
+}
+
+/* Modal Coupon Box */
+.coupon-section {
+background: #151515;
+border: 1px dashed #bb86fc;
+border-radius: 6px;
+padding: 10px;
+margin: 10px 0;
+}
+
+.coupon-title {
+font-size: 11px;
+font-weight: 600;
+color: #bb86fc;
+margin-bottom: 6px;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
+.coupon-code-box {
+display: flex;
+align-items: center;
+justify-content: space-between;
+background: #222;
+padding: 6px 10px;
+border-radius: 4px;
+font-size: 12px;
+margin-bottom: 6px;
+}
+
+.copy-btn {
+background: #bb86fc;
+color: #121212;
+border: none;
+padding: 4px 8px;
+border-radius: 3px;
+font-weight: 600;
+cursor: pointer;
+font-size: 11px;
+transition: background 0.2s;
+}
+
+.copy-btn:hover {
+background: #03dac6;
+}
+
+.bank-offer-text {
+font-size: 11px;
+color: #ffd54f;
+display: flex;
+align-items: center;
+gap: 4px;
+margin-top: 4px;
+}
+
+.effective-price-box {
+background: #0d2818;
+color: #2ecc71;
+border: 1px solid #1e5e38;
+padding: 6px 10px;
+border-radius: 4px;
+font-size: 12px;
+font-weight: 600;
+margin-top: 6px;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
 .similar-section h3 {
@@ -635,7 +722,7 @@ TrendyFits
 <div class="product-grid">
 
 <!-- U TURN Shirt -->
-<div class="card" data-id="p1" data-category="shirt">
+<div class="card" data-id="p1" data-category="shirt" data-coupon="FIT10" data-effective="₹357" data-bankoffer="10% Instant Discount on HDFC/ICICI Cards">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/CsXxNgdN/IMG-9403.jpg" alt="U TURN Shirt" onclick="openProductModal('p1')">
 <div class="info">
@@ -649,12 +736,13 @@ TrendyFits
 <span class="mrp">₹1599</span>
 </div>
 <span class="off">-75% off</span>
+<div class="offer-badge">🏷️ Extra 10% OFF | Code: <b>FIT10</b></div>
 <a class="shop" href="https://amzn.to/4ySrwEm" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- Zombom Shirt -->
-<div class="card" data-id="p2" data-category="shirt">
+<div class="card" data-id="p2" data-category="shirt" data-coupon="SAVE100" data-effective="₹699" data-bankoffer="Flat ₹100 Cashback via SBI Credit Card">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/352WYftk/IMG-9404.jpg" alt="Zombom Shirt" onclick="openProductModal('p2')">
 <div class="info">
@@ -668,12 +756,13 @@ TrendyFits
 <span class="mrp">₹2549</span>
 </div>
 <span class="off">-69% off</span>
+<div class="offer-badge">🏷️ Save ₹100 | Code: <b>SAVE100</b></div>
 <a class="shop" href="https://amzn.to/3Tvv6UQ" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- Afflatus Shirt -->
-<div class="card" data-id="p3" data-category="shirt">
+<div class="card" data-id="p3" data-category="shirt" data-coupon="FESTIVE50" data-effective="₹424" data-bankoffer="10% Instant Off on Axis Bank Cards">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/PZy1Tz2y/IMG-9405.jpg" alt="Afflatus Shirt" onclick="openProductModal('p3')">
 <div class="info">
@@ -687,12 +776,13 @@ TrendyFits
 <span class="mrp">₹1999</span>
 </div>
 <span class="off">-76% off</span>
+<div class="offer-badge">🏷️ Flat ₹50 OFF | Code: <b>FESTIVE50</b></div>
 <a class="shop" href="https://amzn.to/44WK9cy" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- boAt Earbuds -->
-<div class="card" data-id="p4" data-category="gadget">
+<div class="card" data-id="p4" data-category="gadget" data-coupon="BOAT200" data-effective="₹1,399" data-bankoffer="Flat ₹200 Cashback on UPI/Netbanking">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/93z7R3KT/IMG-9406.jpg" alt="boAt Earbuds" onclick="openProductModal('p4')">
 <div class="info">
@@ -706,12 +796,13 @@ TrendyFits
 <span class="mrp">₹4,599</span>
 </div>
 <span class="off">-65% off</span>
+<div class="offer-badge">🏷️ Extra ₹200 OFF | Code: <b>BOAT200</b></div>
 <a class="shop" href="https://amzn.to/4g5jCjn" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- boAt Smartwatch -->
-<div class="card" data-id="p5" data-category="gadget">
+<div class="card" data-id="p5" data-category="gadget" data-coupon="LUNAR150" data-effective="₹1,310" data-bankoffer="10% Instant Savings on HDFC Bank Cards">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/gLWDvtJG/IMG-9407.jpg" alt="boAt Smartwatch" onclick="openProductModal('p5')">
 <div class="info">
@@ -725,6 +816,7 @@ TrendyFits
 <span class="mrp">₹8,499</span>
 </div>
 <span class="off">-83% off</span>
+<div class="offer-badge">🏷️ Extra ₹150 OFF | Code: <b>LUNAR150</b></div>
 <a class="shop" href="https://amzn.to/3S9JAcq" target="_blank">Grab Now</a>
 </div>
 </div>
@@ -741,7 +833,7 @@ TrendyFits
 <div class="product-grid">
 
 <!-- 1) Buda Jeans Co -->
-<div class="card" data-id="p6" data-category="tshirt">
+<div class="card" data-id="p6" data-category="tshirt" data-coupon="BUDA10" data-effective="₹279" data-bankoffer="5% Unlimited Cashback on Flipkart/Paytm Cards">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/k25tDR79/IMG-9408.jpg" alt="Buda Jeans Co Polo T-Shirt" onclick="openProductModal('p6')">
 <div class="info">
@@ -751,12 +843,13 @@ TrendyFits
 <span>1.1k+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
+<div class="offer-badge">🏷️ Extra 10% OFF | Code: <b>BUDA10</b></div>
 <a class="shop" href="https://ajiio.in/8CEqpia" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- 2) JOHN PLAYERS -->
-<div class="card" data-id="p7" data-category="shirt">
+<div class="card" data-id="p7" data-category="shirt" data-coupon="JP70" data-effective="₹548" data-bankoffer="Flat ₹70 Instant Off on UPI Payments">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/PsszVPq2/IMG-9409.jpg" alt="JOHN PLAYERS Checked Shirt" onclick="openProductModal('p7')">
 <div class="info">
@@ -766,12 +859,13 @@ TrendyFits
 <span>2.4k+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
+<div class="offer-badge">🏷️ Save ₹70 | Code: <b>JP70</b></div>
 <a class="shop" href="https://ajiio.in/D8JLAG7" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- 3) RODEIZ -->
-<div class="card" data-id="p8" data-category="shirt">
+<div class="card" data-id="p8" data-category="shirt" data-coupon="RODEIZ10" data-effective="₹221" data-bankoffer="10% Instant Off on ICICI Bank Cards">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/HfmBR0dY/IMG-9410.jpg" alt="RODEIZ Casual Shirt" onclick="openProductModal('p8')">
 <div class="info">
@@ -781,12 +875,13 @@ TrendyFits
 <span>820+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹246</span><span class="off">78% off</span></div>
+<div class="offer-badge">🏷️ Extra 10% OFF | Code: <b>RODEIZ10</b></div>
 <a class="shop" href="https://fktr.in/kWbUm9H" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- 4) RED TAPE -->
-<div class="card" data-id="p9" data-category="shoes">
+<div class="card" data-id="p9" data-category="shoes" data-coupon="RED150" data-effective="₹914" data-bankoffer="Flat ₹150 Instant Discount via Credit Card">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/Qj1X4n5t/IMG-9411.jpg" alt="RED TAPE Running Shoes" onclick="openProductModal('p9')">
 <div class="info">
@@ -796,6 +891,7 @@ TrendyFits
 <span>4.9k+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
+<div class="offer-badge">🏷️ Extra ₹150 OFF | Code: <b>RED150</b></div>
 <a class="shop" href="https://ajiio.in/sd0I9n5" target="_blank">Grab Now</a>
 </div>
 </div>
@@ -810,7 +906,7 @@ TrendyFits
 </div>
 <div class="product-grid">
 
-<div class="card" data-id="p10" data-category="tshirt">
+<div class="card" data-id="p10" data-category="tshirt" data-coupon="BUDA10" data-effective="₹279" data-bankoffer="5% Unlimited Cashback on Cards">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/k25tDR79/IMG-9408.jpg" alt="Buda Jeans Co Polo T-Shirt" onclick="openProductModal('p10')">
 <div class="info">
@@ -820,11 +916,12 @@ TrendyFits
 <span>1.1k+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹310</span><span class="off">69% off</span></div>
+<div class="offer-badge">🏷️ Extra 10% OFF | Code: <b>BUDA10</b></div>
 <a class="shop" href="https://ajiio.in/8CEqpia" target="_blank">Grab Now</a>
 </div>
 </div>
 
-<div class="card" data-id="p11" data-category="shirt">
+<div class="card" data-id="p11" data-category="shirt" data-coupon="JP70" data-effective="₹548" data-bankoffer="Flat ₹70 Instant Off on UPI">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/PsszVPq2/IMG-9409.jpg" alt="JOHN PLAYERS Checked Shirt" onclick="openProductModal('p11')">
 <div class="info">
@@ -834,6 +931,7 @@ TrendyFits
 <span>2.4k+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹618</span><span class="off">70% off</span></div>
+<div class="offer-badge">🏷️ Save ₹70 | Code: <b>JP70</b></div>
 <a class="shop" href="https://ajiio.in/D8JLAG7" target="_blank">Grab Now</a>
 </div>
 </div>
@@ -849,7 +947,7 @@ TrendyFits
 <div class="product-grid">
 
 <!-- 5) AVAASA -->
-<div class="card" data-id="p12" data-category="women">
+<div class="card" data-id="p12" data-category="women" data-coupon="ETHNIC30" data-effective="₹224" data-bankoffer="10% Instant Discount on HDFC Cards">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/Y7fRNZT9/IMG-9412.jpg" alt="AVAASA Floral Kurta" onclick="openProductModal('p12')">
 <div class="info">
@@ -859,12 +957,13 @@ TrendyFits
 <span>3.1k+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹254</span><span class="off">49% off</span></div>
+<div class="offer-badge">🏷️ Extra ₹30 OFF | Code: <b>ETHNIC30</b></div>
 <a class="shop" href="https://ajiio.in/yHUXUZc" target="_blank">Grab Now</a>
 </div>
 </div>
 
 <!-- 6) KOTTY -->
-<div class="card" data-id="p13" data-category="women">
+<div class="card" data-id="p13" data-category="women" data-coupon="KOTTY10" data-effective="₹252" data-bankoffer="10% Instant Savings on SBI Credit Card">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/xdtmKvN/IMG-9413.jpg" alt="KOTTY Flared Trousers" onclick="openProductModal('p13')">
 <div class="info">
@@ -874,6 +973,7 @@ TrendyFits
 <span>1.9k+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹280</span><span class="off">86% off</span></div>
+<div class="offer-badge">🏷️ Extra 10% OFF | Code: <b>KOTTY10</b></div>
 <a class="shop" href="https://ajiio.in/7cg3H6N" target="_blank">Grab Now</a>
 </div>
 </div>
@@ -888,7 +988,7 @@ TrendyFits
 </div>
 <div class="product-grid">
 
-<div class="card" data-id="p14" data-category="shoes">
+<div class="card" data-id="p14" data-category="shoes" data-coupon="RED150" data-effective="₹914" data-bankoffer="Flat ₹150 Instant Discount via Credit Card">
 <button class="wishlist-btn" onclick="toggleWishlist(event, this)">♡</button>
 <img src="https://i.ibb.co/Qj1X4n5t/IMG-9411.jpg" alt="RED TAPE Running Shoes" onclick="openProductModal('p14')">
 <div class="info">
@@ -898,6 +998,7 @@ TrendyFits
 <span>4.9k+ sold</span>
 </div>
 <div class="price-box"><span class="price">₹1064</span><span class="off">86% off</span></div>
+<div class="offer-badge">🏷️ Extra ₹150 OFF | Code: <b>RED150</b></div>
 <a class="shop" href="https://ajiio.in/sd0I9n5" target="_blank">Grab Now</a>
 </div>
 </div>
@@ -942,7 +1043,6 @@ event.stopPropagation();
 const card = btn.closest('.card');
 const cardId = card.getAttribute('data-id');
 
-// Sync state across all duplicate/cloned cards with same data-id
 const allCorrespondingCards = document.querySelectorAll(`.card[data-id="${cardId}"]`);
 
 allCorrespondingCards.forEach(c => {
@@ -1020,7 +1120,6 @@ if (title.includes(query)) {
 matchFound = true;
 let clonedCard = card.cloneNode(true);
 let cardId = card.getAttribute('data-id');
-let origBtn = card.querySelector('.wishlist-btn');
 let clonedBtn = clonedCard.querySelector('.wishlist-btn');
 
 if (wishlist.includes(cardId)) {
@@ -1047,18 +1146,21 @@ document.getElementById('promoBannerSection').style.display = "flex";
 window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// PRODUCT DETAIL MODAL & SIMILAR SUGGESTIONS
+// PRODUCT DETAIL MODAL & COUPON / BANK OFFERS
 function openProductModal(cardId) {
 const targetCard = document.querySelector(`.container:not(#searchResultsContainer):not(#wishlist-section) .card[data-id="${cardId}"]`);
 if(!targetCard) return;
 
 const imgSrc = targetCard.querySelector('img').src;
-const titleHTML = targetCard.querySelector('.info h3').innerHTML;
 const priceBoxHTML = targetCard.querySelector('.price-box').innerHTML;
 const offText = targetCard.querySelector('.off') ? targetCard.querySelector('.off').outerHTML : '';
 const shopLinkHTML = targetCard.querySelector('.shop').outerHTML;
 const statsHTML = targetCard.querySelector('.product-stats').outerHTML;
 const category = targetCard.getAttribute('data-category');
+
+const couponCode = targetCard.getAttribute('data-coupon') || 'TRENDY10';
+const effectivePrice = targetCard.getAttribute('data-effective') || 'Discounted Price';
+const bankOffer = targetCard.getAttribute('data-bankoffer') || '10% Instant Discount on Bank Cards';
 
 const modalDetails = document.getElementById('modalProductDetails');
 modalDetails.innerHTML = `
@@ -1070,11 +1172,28 @@ modalDetails.innerHTML = `
 <div>
 <h2>${targetCard.querySelector('.info h3 a').innerText}</h2>
 ${statsHTML}
-<div class="price-box" style="margin: 10px 0;">${priceBoxHTML}</div>
+<div class="price-box" style="margin: 8px 0;">${priceBoxHTML}</div>
 ${offText}
-<p style="font-size: 13px; color: #aaa; margin: 10px 0;">Inclusive of all taxes. Fast delivery available with easy 7-day return policy.</p>
+
+<!-- Coupon & Bank Offer Box -->
+<div class="coupon-section">
+<div class="coupon-title">🏷️ EXCLUSIVE COUPON & BANK OFFERS</div>
+<div class="coupon-code-box">
+<span>Use Promo Code: <b style="color: #ffd700;">${couponCode}</b></span>
+<button class="copy-btn" onclick="copyCouponCode('${couponCode}', this)">Copy Code</button>
 </div>
-<div style="margin-top: 15px;">
+<div class="bank-offer-text">
+💳 <span><b>Bank Offer:</b> ${bankOffer}</span>
+</div>
+<div class="effective-price-box">
+<span>Effective Price with Coupon/Bank Offer:</span>
+<span>${effectivePrice}</span>
+</div>
+</div>
+
+<p style="font-size: 12px; color: #aaa; margin: 8px 0;">Inclusive of all taxes. Fast delivery available with easy 7-day return policy.</p>
+</div>
+<div style="margin-top: 10px;">
 ${shopLinkHTML}
 </div>
 </div>
@@ -1108,6 +1227,19 @@ similarGrid.innerHTML = '<div style="font-size: 13px; color: #888;">No similar i
 }
 
 document.getElementById('productModal').style.display = 'flex';
+}
+
+function copyCouponCode(code, btn) {
+navigator.clipboard.writeText(code).then(() => {
+btn.innerText = 'Copied! ✓';
+btn.style.background = '#2ecc71';
+btn.style.color = '#fff';
+setTimeout(() => {
+btn.innerText = 'Copy Code';
+btn.style.background = '#bb86fc';
+btn.style.color = '#121212';
+}, 2000);
+});
 }
 
 function closeProductModal() {
