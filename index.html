@@ -5,7 +5,7 @@
 <title>TrendyFits | Online Shopping Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Shopping Cart Favicon / Thumbnail -->
-<link rel="icon" href="https://emojiisland.com/cdn/shop/products/Shopping_Cart_Emoji_5ba2dbdf-cfa9-4a46-834c-6dd410fdd3c0_large.png?v=1571606093" type="image/png">
+<link rel="icon" href="https://emojiisland.com/cdn/shop/products/Shopping_Cart_Emoji_5ba2dbdf-cfa9-4a46-834c-6dd410fdd3c0_large.png" type="image/png">
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -18,8 +18,9 @@ padding: 0;
 }
 
 body{
-background: #121212; /* Premium Dark Theme Background */
-color: #e0e0e0;
+background: linear-gradient(135deg, #ff4e50 0%, #f9d423 100%); /* Amazon/Flipkart Sale Look Theme */
+background-attachment: fixed;
+color: #333;
 padding-bottom: 60px;
 }
 
@@ -173,30 +174,6 @@ height: 100%;
 object-fit: cover;
 }
 
-/* Amazon / Flipkart Style Promotional Offer Banners */
-.promo-banner-container {
-max-width: 1200px;
-margin: 20px auto;
-padding: 0 15px;
-display: flex;
-gap: 15px;
-}
-
-.promo-card {
-flex: 1;
-height: 140px;
-border-radius: 8px;
-overflow: hidden;
-box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-position: relative;
-}
-
-.promo-card img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
-
 /* Section Header */
 .section-header {
 background: #1e1e1e;
@@ -231,6 +208,9 @@ border: 1px solid #5c4d1f;
 max-width: 1200px;
 margin: 20px auto;
 padding: 0 15px;
+background: rgba(255, 255, 255, 0.92);
+border-radius: 10px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 /* Horizontal Scroll Product Grid */
@@ -425,210 +405,6 @@ text-align: center;
 width: 100%;
 }
 
-/* Product Detail Modal Style */
-.modal-overlay {
-display: none;
-position: fixed;
-top: 0; left: 0; width: 100%; height: 100%;
-background: rgba(0,0,0,0.85);
-z-index: 2000;
-justify-content: center;
-align-items: center;
-padding: 20px;
-overflow-y: auto;
-}
-
-.modal-content {
-background: #1a1a1a;
-border: 1px solid #333;
-width: 100%;
-max-width: 800px;
-border-radius: 8px;
-padding: 25px;
-position: relative;
-color: #fff;
-max-height: 90vh;
-overflow-y: auto;
-}
-
-.close-modal {
-position: absolute;
-top: 15px;
-right: 20px;
-background: none;
-border: none;
-color: #aaa;
-font-size: 24px;
-cursor: pointer;
-}
-
-.close-modal:hover {
-color: #fff;
-}
-
-.modal-body-flex {
-display: flex;
-gap: 20px;
-flex-wrap: wrap;
-margin-bottom: 25px;
-}
-
-.modal-img-wrap {
-flex: 1;
-min-width: 250px;
-height: 320px;
-border-radius: 6px;
-overflow: hidden;
-background: #000;
-}
-
-.modal-img-wrap img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
-
-.modal-details {
-flex: 1.2;
-min-width: 250px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-
-.modal-details h2 {
-font-size: 20px;
-margin-bottom: 10px;
-color: #fff;
-}
-
-/* Modal Coupon Box */
-.coupon-section {
-background: #151515;
-border: 1px dashed #bb86fc;
-border-radius: 6px;
-padding: 10px;
-margin: 10px 0;
-}
-
-.coupon-title {
-font-size: 11px;
-font-weight: 600;
-color: #bb86fc;
-margin-bottom: 6px;
-display: flex;
-align-items: center;
-gap: 5px;
-}
-
-.coupon-code-box {
-display: flex;
-align-items: center;
-justify-content: space-between;
-background: #222;
-padding: 6px 10px;
-border-radius: 4px;
-font-size: 12px;
-margin-bottom: 6px;
-}
-
-.copy-btn {
-background: #bb86fc;
-color: #121212;
-border: none;
-padding: 4px 8px;
-border-radius: 3px;
-font-weight: 600;
-cursor: pointer;
-font-size: 11px;
-transition: background 0.2s;
-}
-
-.copy-btn:hover {
-background: #03dac6;
-}
-
-.bank-offer-text {
-font-size: 11px;
-color: #ffd54f;
-display: flex;
-align-items: center;
-gap: 4px;
-margin-top: 4px;
-}
-
-.effective-price-box {
-background: #0d2818;
-color: #2ecc71;
-border: 1px solid #1e5e38;
-padding: 6px 10px;
-border-radius: 4px;
-font-size: 12px;
-font-weight: 600;
-margin-top: 6px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-.similar-section h3 {
-font-size: 16px;
-color: #bb86fc;
-margin-bottom: 15px;
-border-bottom: 1px solid #333;
-padding-bottom: 5px;
-}
-
-.similar-grid {
-display: flex;
-gap: 12px;
-overflow-x: auto;
-padding-bottom: 10px;
-}
-
-/* Mobile Bottom Navigation Bar */
-.mobile-bottom-nav {
-display: none;
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-background: #000000;
-box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
-justify-content: space-around;
-padding: 10px 0;
-z-index: 1000;
-border-top: 1px solid #222;
-}
-
-.nav-item {
-text-align: center;
-text-decoration: none;
-color: #888;
-font-size: 11px;
-font-weight: 600;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 2px;
-}
-
-.nav-item span.icon {
-font-size: 18px;
-}
-
-@media (max-width: 768px) {
-.mobile-bottom-nav {
-display: flex;
-}
-.nav-links {
-display: none;
-}
-.promo-banner-container {
-flex-direction: column;
-}
-}
-
 /* Footer */
 footer{
 background: #000000;
@@ -653,11 +429,11 @@ margin-top: 5px;
 <header>
 <div class="logo-area">
 TrendyFits
-<span class="logo-sub">Black Edition <span style="color:#ffe11b;">✦</span></span>
+<span class="logo-sub">Sale Edition <span style="color:#ffe11b;">✦</span></span>
 </div>
 <div class="search-bar">
-<input type="text" id="searchInput" placeholder="Search for products, brands and more..." onkeyup="if(event.key === 'Enter') searchProducts()">
-<button class="search-btn" onclick="searchProducts()">Search</button>
+<input type="text" id="searchInput" placeholder="Search for products, brands and more...">
+<button class="search-btn">Search</button>
 </div>
 <div class="nav-links">
 <a href="#wishlist-section">❤️ Favorites (<span id="wishlist-count">0</span>)</a>
@@ -667,49 +443,16 @@ TrendyFits
 
 <!-- Category Navigation Bar -->
 <div class="categories-nav">
+<a href="#fitness" class="cat-item">💪 Health & Fitness</a>
+<a href="#perfumes" class="cat-item">✨ Perfumes & Grooming</a>
 <a href="#wishlist-section" class="cat-item">❤️ My Favorites</a>
-<a href="#new-amazon" class="cat-item">⚡ Special Deals</a>
-<a href="#trending" class="cat-item">🔥 Top Trending</a>
-<a href="#men" class="cat-item">👔 Men's Wear</a>
-<a href="#women" class="cat-item">👗 Women & Skincare</a>
-<a href="#shoes" class="cat-item">👟 Footwear</a>
 </div>
 
 <!-- Banner Slider Section -->
-<div class="hero-banner" id="heroBannerSection">
+<div class="hero-banner">
 <div class="banner-slider">
-<div class="banner-slide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Banner 1"></div>
-<div class="banner-slide"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050" alt="Banner 2"></div>
-</div>
-</div>
-
-<!-- PROMO BANNERS -->
-<div class="promo-banner-container" id="promoBannerSection">
-<div class="promo-card">
-<img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a" alt="Mega Sale">
-</div>
-<div class="promo-card">
-<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Fashion Fest">
-</div>
-</div>
-
-<!-- SEARCH RESULTS SECTION (Initially Hidden) -->
-<div class="container" id="searchResultsContainer" style="display: none;">
-<div class="section-header" style="background: #1a1528; border-color: #3b2a54;">
-<h2 style="color: #bb86fc;">🔍 Search Results</h2>
-<div class="timer-box" style="background: #231934; color: #bb86fc; border-color: #4a356e; cursor: pointer;" onclick="clearSearch()">Clear Search</div>
-</div>
-<div class="product-grid" id="search-results-grid" style="flex-wrap: wrap; overflow-x: visible;"></div>
-</div>
-
-<!-- SECTION 0: WISHLIST -->
-<div class="container" id="wishlist-section">
-<div class="section-header" style="background: #251b22; border-color: #3b2532;">
-<h2 style="color: #ff3366;">❤️ Your Favorite Products</h2>
-<div class="timer-box" style="background: #331a22; color: #ff3366; border-color: #5c2435;">Saved Items</div>
-</div>
-<div class="product-grid" id="wishlist-grid">
-<div class="empty-msg">No favorites added yet! Click the heart icon (♡) on any product to save it here.</div>
+<div class="banner-slide"><img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a" alt="Mega Sale"></div>
+<div class="banner-slide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Fashion Fest"></div>
 </div>
 </div>
 
